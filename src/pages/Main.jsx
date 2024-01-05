@@ -27,9 +27,11 @@ export default function Main() {
 
     const Title = styled.h1`
         font-size: 86px;
+        letter-spacing: -5px;
         font-family: 'Barlow', sans-serif;
         color: #FFFFFF;
         text-align: center;
+        margin-bottom: 0;
     `;
     const Button = styled.button`
         font-size: 18px;
@@ -38,6 +40,7 @@ export default function Main() {
         border-radius: 50px;
         padding: 10px 50px;
         border: none;
+        margin-top: 20px;
     `;
 
     return (
