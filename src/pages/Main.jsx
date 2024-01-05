@@ -2,6 +2,7 @@ import React from "react"
 import banner from "../assets/mvp-banner.png"
 import styled from "styled-components"
 import logo from "../assets/logo.svg"
+import { Link } from "react-router-dom";
 
 export default function Main() {
     const Image = styled.img`
@@ -47,7 +48,9 @@ export default function Main() {
             <Container>
                 <img src={logo} className="logo react" alt="React logo" />
                 <Title>KOD ACIKTIRIR PIZZA, DOYURUR</Title>
-                <Button>ACIKTIM</Button>
+                <Link to="/pizza">
+                    <Button id="order-pizza">ACIKTIM</Button>
+                </Link>
             </Container>
             <Image src={banner} alt="pizza" />
         </>
