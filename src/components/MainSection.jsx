@@ -18,10 +18,8 @@ export default function MainSection() {
             <Container>
                 <InfoArea/>
                 <FormArea />
-                <hr />
-                <SubmitArea />
+                
             </Container>
-            
         </>
     )
 } 
