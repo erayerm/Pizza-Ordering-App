@@ -16,7 +16,7 @@ const extras = [
     "Kanada Jambonu",
     "Domates",
     "Jalepeno",
-    "Nigga"
+    "Sucuk Değil"
 ]
 
 
@@ -36,7 +36,6 @@ const SizeHamurContainer = styled.div`
 
 const SizeContainer = styled.div`
     width: 50%;
-    
     div{
         color: #5F5F5F;
         font-family: Barlow;
@@ -106,7 +105,7 @@ const TextArea = styled.textarea`
 export default function FormArea() {
 
     return (
-        <form>
+        <form id="form">
             <SizeHamurContainer>
                 <SizeContainer>
                     <Titles>Boyut Seç <RedStar>*</RedStar></Titles>
