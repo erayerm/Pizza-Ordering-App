@@ -26,13 +26,18 @@ export default function Main() {
     `;
 
     const Title = styled.h1`
+        color: #FFF;
+        font-family: "Barlow";
         font-size: 86px;
+        font-style: normal;
+        font-weight: 200;
+        line-height: 92px;
         letter-spacing: -5px;
-        font-family: 'Barlow', sans-serif;
-        color: #FFFFFF;
+        text-transform: uppercase;
         text-align: center;
         margin-bottom: 0;
     `;
+
     const Button = styled.button`
         font-size: 18px;
         background-color: #FDC913;
@@ -46,10 +51,10 @@ export default function Main() {
     return (
         <>
             <style>
-                @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap');
+                @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300&display=swap');
             </style>
             <Container>
-                <img src={logo} className="logo react" alt="React logo" />
+                <img src={logo} alt="logo" />
                 <Title>KOD ACIKTIRIR PIZZA, DOYURUR</Title>
                 <Link to="/pizza">
                     <Button id="order-pizza">ACIKTIM</Button>
