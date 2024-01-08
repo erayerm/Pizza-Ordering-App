@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -268,17 +269,25 @@ export default function FormArea() {
     function handleClick() {
         if(!isValid){
             setButtonClicked(true);
-            if(!errors.isim){
-                isimRef.current.scrollIntoView({ behavior: 'smooth' });
+            if(!errors.hamur){
+                hamurRef.current.scrollIntoView({ behavior: 'smooth' });
+
             } else if (!errors.size){
                 sizeRef.current.scrollIntoView({ behavior: 'smooth' });
-            } else if (!errors.hamur) {
-                hamurRef.current.scrollIntoView({ behavior: 'smooth' });
+
             } else if (!errors.malzemelerAz || !errors.malzemelerFazla) {
                 extrasRef.current.scrollIntoView({ behavior: 'smooth' });
+
+            } else if (!errors.isim) {
+                isimRef.current.scrollIntoView({ behavior: 'smooth' });
+
             }
         }else{
-            history.push("/")
+            history.push("/");
+            axios.post('https://reqres.in/api/users', form).then((res) => {
+                console.log(res.data);
+                setForm(initialForm);
+            });
         }
     }
     const adjustCount = (event) => {
@@ -316,15 +325,13 @@ export default function FormArea() {
             }
         }
         if (name === "isim") {
-            if (value.replaceAll(' ', '').length >= 2) {
+            if (value.replaceAllAll(' ', '').length >= 2) {
                 setErrors({ ...errors, [name]: true });
             } else {
                 setErrors({ ...errors, [name]: false });
             }
         }
 
-        console.log(errors);
-        console.log("checkedCount: " + checkedCount)
     }
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -367,10 +374,10 @@ export default function FormArea() {
                     <AllCheckBoxes>
                         {extras.map((extra, index) => {
                             let lowerExtra = TrToEn(extra)
-                                .replace(" ", "");
+                                .replaceAll(" ", "");
                             lowerExtra = lowerExtra.charAt(0).toLowerCase() + lowerExtra.slice(1);
                             return <Checkboxes key={index}>
-                                <input onChange={handleChange} type="checkbox" id={lowerExtra} name="malzemeler-checkbox" value={extra} />
+                                <input onChange={handleChange} type="checkbox" id={lowerExtra} name={lowerExtra} value={extra} />
                                 <label htmlFor={lowerExtra}>{extra}</label>
                             </Checkboxes>
                         })}
@@ -414,16 +421,16 @@ export default function FormArea() {
 }
 
 const TrToEn = (str) => {
-    return str.replace('Ğ', 'G')
-        .replace('Ü', 'U')
-        .replace('Ş', 'S')
-        .replace('İ', 'I')
-        .replace('Ö', 'O')
-        .replace('Ç', 'C')
-        .replace('ğ', 'g')
-        .replace('ü', 'u')
-        .replace('ş', 's')
-        .replace('ı', 'i')
-        .replace('ö', 'o')
-        .replace('ç', 'c');
+    return str.replaceAll('Ğ', 'G')
+        .replaceAll('Ü', 'U')
+        .replaceAll('Ş', 'S')
+        .replaceAll('İ', 'I')
+        .replaceAll('Ö', 'O')
+        .replaceAll('Ç', 'C')
+        .replaceAll('ğ', 'g')
+        .replaceAll('ü', 'u')
+        .replaceAll('ş', 's')
+        .replaceAll('ı', 'i')
+        .replaceAll('ö', 'o')
+        .replaceAll('ç', 'c');
 }
