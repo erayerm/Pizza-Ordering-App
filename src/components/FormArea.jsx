@@ -213,6 +213,7 @@ const initialForm = {
     hamur: "",
     siparisNotu: "",
     howMany: 1,
+    pizzaPrice: 0,
     "pepperoni": false,
     "tavukIzgara": false,
     "misir": false,
@@ -257,10 +258,11 @@ export default function FormArea({setPropForm}) {
     const [checkedCount, setCheckedCount] = useState(0);
     const [isValid, setIsValid] = useState(false);
     const [buttonClicked, setButtonClicked] = useState(false);
-    const price = 85.5;
+    
     const history = useHistory();
-
-
+    useEffect(()=>{
+        setForm({ ...form, "pizzaPrice": 85.50 });
+    }, [])
     useEffect(() => {
         if (errors.isim && errors.size && errors.hamur && errors.malzemelerAz && errors.malzemelerFazla) {
             validSetter(true);
@@ -420,7 +422,7 @@ export default function FormArea({setPropForm}) {
                         </Prices>
                         <ResultPrice>
                             <PriceText>Toplam</PriceText>
-                            <PriceText>{(checkedCount * 5 + price) * form.howMany}₺</PriceText>
+                            <PriceText>{(checkedCount * 5 + form.pizzaPrice) * form.howMany}₺</PriceText>
                         </ResultPrice>
                         <Submit data-cy="submit" type="submit" id="order-button" onClick={handleClick}>SİPARİŞ VER</Submit>
                     </ResultContainer>

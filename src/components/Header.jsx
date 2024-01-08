@@ -24,6 +24,7 @@ export default function HeaderComponent() {
         height:47px;
         align-self: center;
         padding-top: 66.49px;
+        box-sizing: content-box;
     `;
     const Nav = styled.nav`
         display: flex;
