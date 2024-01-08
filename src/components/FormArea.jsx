@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import styled from "styled-components"
 
 
@@ -198,6 +200,12 @@ const Submit = styled.button`
     }
 `;
 
+const HataMesaji = styled.p`
+    font-size:14px;
+    padding:10px;
+    color: red;
+`;
+
 const initialForm = {
     isim: "",
     size: "",
@@ -225,25 +233,30 @@ const initialErrors = {
     size: false,
     hamur: false,
     malzemelerAz: false,
-    malzemelerFazla: false
+    malzemelerFazla: true
 }
 
 const errorMessages = {
-    isim: "İsim en az 2 karakter olmalıdır.",
-    size: "Lütfen pizzanın boyutunu seçiniz",
-    hamur: "Lütfen hamur kalınlığı seçiniz",
-    malzemelerAz: "En az 4 malzeme seçmelisiniz",
-    malzemelerFazla: "En fazla 10 malzeme seçebilirsiniz",
+    isim: "İsim en az 2 karakter olmalıdır!",
+    size: "Lütfen pizzanın boyutunu seçiniz!",
+    hamur: "Lütfen hamur kalınlığı seçiniz!",
+    malzemelerAz: "En az 4 malzeme seçmelisiniz!",
+    malzemelerFazla: "En fazla 10 malzeme seçebilirsiniz!",
 }
 
 export default function FormArea() {
+    const sizeRef = useRef(null);
+    const hamurRef = useRef(null);
+    const extrasRef = useRef(null);
+    const isimRef = useRef(null);
 
     const [form, setForm] = useState(initialForm);
     const [errors, setErrors] = useState(initialErrors);
     const [checkedCount, setCheckedCount] = useState(0);
     const [isValid, setIsValid] = useState(false);
+    const [buttonClicked, setButtonClicked] = useState(false);
     const price = 85.5;
-
+    const history = useHistory();
     useEffect(() => {
         if (errors.isim && errors.size && errors.hamur && errors.malzemelerAz && errors.malzemelerFazla) {
             setIsValid(true);
@@ -252,6 +265,22 @@ export default function FormArea() {
         }
     }, [form])
 
+    function handleClick() {
+        if(!isValid){
+            setButtonClicked(true);
+            if(!errors.isim){
+                isimRef.current.scrollIntoView({ behavior: 'smooth' });
+            } else if (!errors.size){
+                sizeRef.current.scrollIntoView({ behavior: 'smooth' });
+            } else if (!errors.hamur) {
+                hamurRef.current.scrollIntoView({ behavior: 'smooth' });
+            } else if (!errors.malzemelerAz || !errors.malzemelerFazla) {
+                extrasRef.current.scrollIntoView({ behavior: 'smooth' });
+            }
+        }else{
+            history.push("/")
+        }
+    }
     const adjustCount = (event) => {
         if (event.target.id === "arttir") {
             setForm({ ...form, "howMany": (form.howMany + 1) })
@@ -297,12 +326,14 @@ export default function FormArea() {
         console.log(errors);
         console.log("checkedCount: " + checkedCount)
     }
-
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    };
     return (
         <>
-            <form id="pizza-form">
+            <form id="pizza-form" onSubmit={handleSubmit}>
                 <SizeHamurContainer>
-                    <SizeContainer>
+                    <SizeContainer ref={sizeRef}>
                         <Titles>Boyut Seç <RedStar>*</RedStar></Titles>
                         <div>
                             <input onChange={handleChange} type="radio" id="kucuk" name="size" value="Küçük" />
@@ -316,8 +347,9 @@ export default function FormArea() {
                             <input onChange={handleChange} type="radio" id="buyuk" name="size" value="Büyük" />
                             <label htmlFor="buyuk">Büyük</label>
                         </div>
+                        {buttonClicked && !errors.size && <HataMesaji>{errorMessages.size}</HataMesaji>}
                     </SizeContainer>
-                    <HamurContainer>
+                    <HamurContainer ref={hamurRef}>
                         <Titles>Hamur Seç <RedStar>*</RedStar></Titles>
                         <select name="hamur" id="hamur" defaultValue="pickOne" onChange={handleChange}>
                             <option name="hamur" value="pickOne" disabled>Hamur Kalınlığı</option>
@@ -326,9 +358,10 @@ export default function FormArea() {
                             <option name="hamur" value="İpince Hamur">İpince Hamur</option>
                             <option name="hamur" value="Hamursuz">Hamursuz (Literally)</option>
                         </select>
+                        {buttonClicked && !errors.hamur && <HataMesaji>{errorMessages.hamur}</HataMesaji>}
                     </HamurContainer>
                 </SizeHamurContainer>
-                <ExtrasContainer>
+                <ExtrasContainer ref={extrasRef}>
                     <Titles>Ek Malzemeler</Titles>
                     <Info>En Fazla 10 malzeme seçebilirsiniz. 5₺</Info>
                     <AllCheckBoxes>
@@ -342,10 +375,14 @@ export default function FormArea() {
                             </Checkboxes>
                         })}
                     </AllCheckBoxes>
+                    {buttonClicked && !errors.malzemelerAz && <HataMesaji>{errorMessages.malzemelerAz}</HataMesaji>}
+                    {buttonClicked && !errors.malzemelerFazla && <HataMesaji>{errorMessages.malzemelerFazla}</HataMesaji>}
+
                 </ExtrasContainer>
-                <NameContainer>
+                <NameContainer ref={isimRef}>
                     <Titles>Adınız</Titles>
                     <TextInput onChange={handleChange} type="text" name="isim" value={form.isim} placeholder="Adınızı girin." />
+                    {buttonClicked && !errors.isim && <HataMesaji>{errorMessages.isim}</HataMesaji>}
                 </NameContainer>
                 <NoteContainer>
                     <Titles>Sipariş Notu</Titles>
@@ -368,7 +405,7 @@ export default function FormArea() {
                             <PriceText>Toplam</PriceText>
                             <PriceText>{(checkedCount * 5 + price) * form.howMany}₺</PriceText>
                         </ResultPrice>
-                        <Submit type="submit" id="order-button" disabled={!isValid}>SİPARİŞ VER</Submit>
+                        <Submit type="submit" id="order-button" onClick={handleClick}>SİPARİŞ VER</Submit>
                     </ResultContainer>
                 </PaymentContainer>
             </form>
