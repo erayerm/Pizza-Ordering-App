@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react"
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import styled from "styled-components"
 
@@ -35,7 +34,7 @@ const Titles = styled.p`
 `;
 
 const SizeHamurContainer = styled.div`
-    margin-top: 51px;
+    margin-top: 20px;
     display: flex;
 `;
 
@@ -124,6 +123,7 @@ const TextInput = styled.input`
 const PaymentContainer = styled.div`
     margin-top:38px;
     display: flex;
+    margin-bottom: 40px;
 `;
 const ButtonGroup = styled.div`
     flex: 3;
@@ -283,7 +283,7 @@ export default function FormArea() {
 
             }
         }else{
-            history.push("/");
+            history.push("/success");
             axios.post('https://reqres.in/api/users', form).then((res) => {
                 console.log(res.data);
                 setForm(initialForm);
@@ -325,7 +325,7 @@ export default function FormArea() {
             }
         }
         if (name === "isim") {
-            if (value.replaceAllAll(' ', '').length >= 2) {
+            if (value.replaceAll(' ', '').length >= 2) {
                 setErrors({ ...errors, [name]: true });
             } else {
                 setErrors({ ...errors, [name]: false });

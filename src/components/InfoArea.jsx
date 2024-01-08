@@ -22,8 +22,9 @@ const Price = styled.p`
 `;
 const Point = styled.p`
     margin:0;
-    flex:1;
+    flex:2;
     color: #5F5F5F;
+    text-align: right;
     font-family: Barlow;
     font-size: 16px;
     font-style: normal;
