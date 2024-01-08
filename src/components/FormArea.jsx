@@ -260,11 +260,18 @@ export default function FormArea() {
     const history = useHistory();
     useEffect(() => {
         if (errors.isim && errors.size && errors.hamur && errors.malzemelerAz && errors.malzemelerFazla) {
-            setIsValid(true);
+            validSetter(true);
         } else {
-            setIsValid(false);
+            validSetter(false);
+        }
+        return () => {
+            setIsValid();
         }
     }, [form])
+
+    const validSetter = (bool) => {
+        setIsValid(bool);
+    }
 
     function handleClick() {
         if(!isValid){
