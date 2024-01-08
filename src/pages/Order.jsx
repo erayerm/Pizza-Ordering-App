@@ -1,12 +1,12 @@
 import React from "react"
-import HeaderComponent from "../components/HeaderComponent"
+import Header from "../components/Header"
 import MainSection from "../components/MainSection"
 
 export default function Order() {
 
     return (
         <>
-            <HeaderComponent/>
+            <Header />
             <MainSection/>
         </>
     )

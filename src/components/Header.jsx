@@ -18,7 +18,7 @@ export default function HeaderComponent() {
         justify-content: space-between;
 
     `;
-    //644 695
+
     const Image = styled.img`
         width:363px;
         height:47px;
@@ -35,14 +35,10 @@ export default function HeaderComponent() {
     `;
     const Text = styled.p`
         color: #FAF7F2;
-
-
     `;
     const TextLink = styled.a`
         text-decoration: none;
         color: #FAF7F2;
-
-
     `;
 
     return (

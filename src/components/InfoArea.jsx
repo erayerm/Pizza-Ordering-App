@@ -8,8 +8,11 @@ const PricePointRateContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom:0px;
+    margin-top: 28px;
 `;
 const Price = styled.p`
+    margin:0;
     flex: 4;
     font-family: Barlow;
     font-size: 28px;
@@ -18,6 +21,7 @@ const Price = styled.p`
     line-height: 37.467px; /* 133.81% */
 `;
 const Point = styled.p`
+    margin:0;
     flex:1;
     color: #5F5F5F;
     font-family: Barlow;
@@ -31,6 +35,7 @@ const Rate = styled(Point)`
 `;
 
 const Info = styled.p`
+margin-top: 25px;
 color: #5F5F5F;
 font-family: Barlow;
 font-size: 16px;

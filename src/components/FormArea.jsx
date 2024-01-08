@@ -32,6 +32,7 @@ const Titles = styled.p`
 `;
 
 const SizeHamurContainer = styled.div`
+    margin-top: 51px;
     display: flex;
 `;
 
@@ -43,7 +44,7 @@ const SizeContainer = styled.div`
         font-size: 16px;
         font-style: normal;
         font-weight: 500;
-        line-height: 56px; /* 350% */
+        margin-top: 15px;
     }
     div label{
         padding-left: 10px;
@@ -55,6 +56,7 @@ const HamurContainer = styled.div`
 `;
 
 const ExtrasContainer = styled.div`
+    margin-top: 54px;
     width: 100%;
 `;
 
@@ -90,10 +92,13 @@ const RedStar = styled.span`
 `;
 
 const NoteContainer = styled.div`
+    margin-bottom:50px;
     width: 100%;
 `;
 
 const NameContainer = styled.div`
+    margin-top:40px;
+    margin-bottom:50px;
     width: 100%;
 `;
 
@@ -114,49 +119,80 @@ const TextInput = styled.input`
 
 
 const PaymentContainer = styled.div`
-        display: flex;
+    margin-top:38px;
+    display: flex;
 `;
 const ButtonGroup = styled.div`
-        flex: 3;
+    flex: 3;
 `;
 
 const ResultContainer = styled.div`
-        flex: 7;
-        border: 1px solid #D9D9D9;
-        border-radius: 6px;
+    flex: 7;
+    border: 1px solid #D9D9D9;
+    border-radius: 6px;
 `;
 
 const Button = styled.button`
-        height: 50px;
-        width: 30px;
-        border:none;
-        cursor:pointer; 
+    height: 50px;
+    width: 40px;
+    border: none;
+    border-top: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+    background-color: white;
 `;
 const YellowButton = styled(Button)`
-        background-color: #FDC913;
-        &:first-child{
-            border-radius: 6px 0px 0px 6px;
-        }
-        &:last-child{
-            border-radius: 0px 6px 6px 0px;
-        }
+    cursor:pointer; 
+    border: none;
+    background-color: #FDC913;
+    &:first-child{
+        border-radius: 6px 0px 0px 6px;
+    }
+    &:last-child{
+        border-radius: 0px 6px 6px 0px;
+    }
 
 `;
-const Title = styled.p`
-    padding: 0 40px;
+const Title = styled(Titles)`
+    padding: 20px 40px 0px 40px;
 `;
 const Prices = styled.div`
-        padding: 0 40px;
-        display:flex;
-        justify-content: space-between;
+    padding: 0 40px;
+    display:flex;
+    justify-content: space-between;
+    margin-top:10px;
+    color: #5F5F5F;
+        
 `;
+//22 12 46
+const PriceText = styled.p`
+    margin-top:12px;
+    margin-bottom:0px;
+    font-family: Barlow;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24.762px; /* 137.566% */
+`;
+
+const ResultPrice = styled(Prices)`
+    margin-top: 0px;
+    margin-bottom:46px;
+    color: red;
+`;
+
 const Submit = styled.button`
-        border:none;
-        border-radius: 0px 0px 5px 5px;
-        background: #FDC913;
-        height:50px;
-        width: 100%;
-        cursor:pointer;
+    border:none;
+    border-radius: 0px 0px 5px 5px;
+    background: #FDC913;    
+    height: 62px;
+    width: 100%;
+    cursor:pointer;
+    color: #292929;
+    text-align: center;
+    font-family: Barlow;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 56px; /* 311.111% */
 `;
 
 const initialForm = {
@@ -227,7 +263,6 @@ export default function FormArea() {
     return (
         <>
             <form id="pizza-form">
-                <p>{form.isim+checkedCount + form.size + form.hamur + form.pepperoni}</p>
                 <SizeHamurContainer>
                     <SizeContainer>
                         <Titles>Boyut Seç <RedStar>*</RedStar></Titles>
@@ -281,26 +316,24 @@ export default function FormArea() {
                 <hr />
                 <PaymentContainer>
                     <ButtonGroup>
-                        <YellowButton id="azalt" onClick={adjustCount}>-</YellowButton>
-                        <Button>{form.count}</Button>
-                        <YellowButton id="arttir" onClick={adjustCount}>+</YellowButton>
+                        <YellowButton type="button" id="azalt" onClick={adjustCount}>-</YellowButton>
+                        <Button type="button">{form.count}</Button>
+                        <YellowButton type="button" id="arttir" onClick={adjustCount}>+</YellowButton>
                     </ButtonGroup>
                     <ResultContainer>
                         <Title>Sipariş Toplamı</Title>
                         <Prices>
-                            <p>Seçimler</p>
-                            <p>{checkedCount * 5}₺</p>
+                            <PriceText>Seçimler</PriceText>
+                            <PriceText>{checkedCount * 5}₺</PriceText>
                         </Prices>
-                        <Prices>
-                            <p>Toplam</p>
-                            <p>{(checkedCount * 5 + price) * form.count}₺</p>
-                        </Prices>
+                        <ResultPrice>
+                            <PriceText>Toplam</PriceText>
+                            <PriceText>{(checkedCount * 5 + price) * form.count}₺</PriceText>
+                        </ResultPrice>
                         <Submit type="submit" id="order-button">SİPARİŞ VER</Submit>
                     </ResultContainer>
                 </PaymentContainer>
             </form>
-
-
         </>
     )
 }
