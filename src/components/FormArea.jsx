@@ -343,22 +343,22 @@ export default function FormArea() {
                     <SizeContainer ref={sizeRef}>
                         <Titles>Boyut Seç <RedStar>*</RedStar></Titles>
                         <div>
-                            <input onChange={handleChange} type="radio" id="kucuk" name="size" value="Küçük" />
+                            <input data-cy="kucuk" onChange={handleChange} type="radio" id="kucuk" name="size" value="Küçük" />
                             <label htmlFor="kucuk">Küçük</label>
                         </div>
                         <div>
-                            <input onChange={handleChange} type="radio" id="orta" name="size" value="Orta" />
+                            <input data-cy="orta" onChange={handleChange} type="radio" id="orta" name="size" value="Orta" />
                             <label htmlFor="orta">Orta</label>
                         </div>
                         <div>
-                            <input onChange={handleChange} type="radio" id="buyuk" name="size" value="Büyük" />
+                            <input data-cy="buyuk" onChange={handleChange} type="radio" id="buyuk" name="size" value="Büyük" />
                             <label htmlFor="buyuk">Büyük</label>
                         </div>
                         {buttonClicked && !errors.size && <HataMesaji>{errorMessages.size}</HataMesaji>}
                     </SizeContainer>
                     <HamurContainer ref={hamurRef}>
                         <Titles>Hamur Seç <RedStar>*</RedStar></Titles>
-                        <select name="hamur" id="hamur" defaultValue="pickOne" onChange={handleChange}>
+                        <select data-cy="select" name="hamur" id="hamur" defaultValue="pickOne" onChange={handleChange}>
                             <option name="hamur" value="pickOne" disabled>Hamur Kalınlığı</option>
                             <option name="hamur" value="Kalın Hamur">Kalın Hamur</option>
                             <option name="hamur" value="İnce Hamur">İnce Hamur</option>
@@ -377,7 +377,7 @@ export default function FormArea() {
                                 .replaceAll(" ", "");
                             lowerExtra = lowerExtra.charAt(0).toLowerCase() + lowerExtra.slice(1);
                             return <Checkboxes key={index}>
-                                <input onChange={handleChange} type="checkbox" id={lowerExtra} name={lowerExtra} value={extra} />
+                                <input data-cy={"checkbox"+(index+1)} onChange={handleChange} type="checkbox" id={lowerExtra} name={lowerExtra} value={extra} />
                                 <label htmlFor={lowerExtra}>{extra}</label>
                             </Checkboxes>
                         })}
@@ -388,7 +388,7 @@ export default function FormArea() {
                 </ExtrasContainer>
                 <NameContainer ref={isimRef}>
                     <Titles>Adınız</Titles>
-                    <TextInput onChange={handleChange} type="text" name="isim" value={form.isim} placeholder="Adınızı girin." />
+                    <TextInput onChange={handleChange} data-cy="isim" type="text" name="isim" value={form.isim} placeholder="Adınızı girin." />
                     {buttonClicked && !errors.isim && <HataMesaji>{errorMessages.isim}</HataMesaji>}
                 </NameContainer>
                 <NoteContainer>
@@ -412,7 +412,7 @@ export default function FormArea() {
                             <PriceText>Toplam</PriceText>
                             <PriceText>{(checkedCount * 5 + price) * form.howMany}₺</PriceText>
                         </ResultPrice>
-                        <Submit type="submit" id="order-button" onClick={handleClick}>SİPARİŞ VER</Submit>
+                        <Submit data-cy="submit" type="submit" id="order-button" onClick={handleClick}>SİPARİŞ VER</Submit>
                     </ResultContainer>
                 </PaymentContainer>
             </form>
