@@ -10,13 +10,13 @@ const Container = styled.div`
 
 
 
-export default function MainSection() {
+export default function MainSection({ setPropForm }) {
 
     return (
         <>
             <Container>
                 <InfoArea/>
-                <FormArea />
+                <FormArea setPropForm={setPropForm} />
             </Container>
         </>
     )

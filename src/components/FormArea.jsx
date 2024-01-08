@@ -245,7 +245,8 @@ const errorMessages = {
     malzemelerFazla: "En fazla 10 malzeme seçebilirsiniz!",
 }
 
-export default function FormArea() {
+export default function FormArea({setPropForm}) {
+
     const sizeRef = useRef(null);
     const hamurRef = useRef(null);
     const extrasRef = useRef(null);
@@ -258,6 +259,8 @@ export default function FormArea() {
     const [buttonClicked, setButtonClicked] = useState(false);
     const price = 85.5;
     const history = useHistory();
+
+
     useEffect(() => {
         if (errors.isim && errors.size && errors.hamur && errors.malzemelerAz && errors.malzemelerFazla) {
             validSetter(true);
@@ -290,11 +293,11 @@ export default function FormArea() {
 
             }
         }else{
-            history.push("/success");
             axios.post('https://reqres.in/api/users', form).then((res) => {
                 console.log(res.data);
-                setForm(initialForm);
             });
+            setPropForm({...form});
+            history.push("/success");
         }
     }
     const adjustCount = (event) => {

@@ -31,13 +31,11 @@ const Text = styled.p`
 `;
 
 
-export default function Success() {
-
-    
-
+export default function Success({propForm}) {
     return (
         <>
             <Container>
+            {/*console.log(propForm)*/}
                 <style>
                     @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300&display=swap');
                 </style>
