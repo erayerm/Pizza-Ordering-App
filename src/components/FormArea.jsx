@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 
 
@@ -193,6 +193,9 @@ const Submit = styled.button`
     font-style: normal;
     font-weight: 600;
     line-height: 56px; /* 311.111% */
+    &:disabled{
+        cursor: not-allowed;
+    }
 `;
 
 const initialForm = {
@@ -200,7 +203,7 @@ const initialForm = {
     size: "",
     hamur: "",
     siparisNotu: "",
-    count: 1,
+    howMany: 1,
     "pepperoni": false,
     "tavukIzgara": false,
     "misir": false,
@@ -236,14 +239,25 @@ const errorMessages = {
 export default function FormArea() {
 
     const [form, setForm] = useState(initialForm);
+    const [errors, setErrors] = useState(initialErrors);
     const [checkedCount, setCheckedCount] = useState(0);
+    const [isValid, setIsValid] = useState(false);
     const price = 85.5;
+
+    useEffect(() => {
+        if (errors.isim && errors.size && errors.hamur && errors.malzemelerAz && errors.malzemelerFazla) {
+            setIsValid(true);
+        } else {
+            setIsValid(false);
+        }
+    }, [form])
+
     const adjustCount = (event) => {
         if (event.target.id === "arttir") {
-            setForm({ ...form, ["count"]: (form.count + 1) })
+            setForm({ ...form, "howMany": (form.howMany + 1) })
         } else {
-            if (form.count !== 1) {
-                setForm({ ...form, ["count"]: (form.count - 1) })
+            if (form.howMany !== 1) {
+                setForm({ ...form, "howMany": (form.howMany - 1) })
             }
         }
     }
@@ -252,14 +266,38 @@ export default function FormArea() {
         let { type, name, checked, value } = event.target;
         value = type === 'checkbox' ? checked : value;
         setForm({ ...form, [name]: value });
+        if (name === "size") {
+            setErrors({ ...errors, [name]: true });
+        }
+        if (name === "hamur") {
+            if (value !== "pickOne") {
+                setErrors({ ...errors, [name]: true });
+            } else {
+                setErrors({ ...errors, [name]: false });
+            }
+        }
         if (type === "checkbox") {
             if (checked) {
+                setErrors({ ...errors, "malzemelerFazla": (checkedCount + 1 <= 10 ? true : false), "malzemelerAz": (checkedCount + 1 >= 4 ? true : false) });
                 setCheckedCount(checkedCount + 1);
             } else {
+                setErrors({ ...errors, "malzemelerFazla": (checkedCount - 1 <= 10 ? true : false), "malzemelerAz": (checkedCount - 1 >= 4 ? true : false) });
+
                 setCheckedCount(checkedCount - 1);
             }
         }
+        if (name === "isim") {
+            if (value.replaceAll(' ', '').length >= 2) {
+                setErrors({ ...errors, [name]: true });
+            } else {
+                setErrors({ ...errors, [name]: false });
+            }
+        }
+
+        console.log(errors);
+        console.log("checkedCount: " + checkedCount)
     }
+
     return (
         <>
             <form id="pizza-form">
@@ -268,21 +306,21 @@ export default function FormArea() {
                         <Titles>Boyut Seç <RedStar>*</RedStar></Titles>
                         <div>
                             <input onChange={handleChange} type="radio" id="kucuk" name="size" value="Küçük" />
-                            <label for="kucuk">Küçük</label>
+                            <label htmlFor="kucuk">Küçük</label>
                         </div>
                         <div>
                             <input onChange={handleChange} type="radio" id="orta" name="size" value="Orta" />
-                            <label for="orta">Orta</label>
+                            <label htmlFor="orta">Orta</label>
                         </div>
                         <div>
                             <input onChange={handleChange} type="radio" id="buyuk" name="size" value="Büyük" />
-                            <label for="buyuk">Büyük</label>
+                            <label htmlFor="buyuk">Büyük</label>
                         </div>
                     </SizeContainer>
                     <HamurContainer>
                         <Titles>Hamur Seç <RedStar>*</RedStar></Titles>
-                        <select name="hamur" id="hamur" onChange={handleChange}>
-                            <option name="hamur" value="pickOne" selected disabled>Hamur Kalınlığı</option>
+                        <select name="hamur" id="hamur" defaultValue="pickOne" onChange={handleChange}>
+                            <option name="hamur" value="pickOne" disabled>Hamur Kalınlığı</option>
                             <option name="hamur" value="Kalın Hamur">Kalın Hamur</option>
                             <option name="hamur" value="İnce Hamur">İnce Hamur</option>
                             <option name="hamur" value="İpince Hamur">İpince Hamur</option>
@@ -294,20 +332,20 @@ export default function FormArea() {
                     <Titles>Ek Malzemeler</Titles>
                     <Info>En Fazla 10 malzeme seçebilirsiniz. 5₺</Info>
                     <AllCheckBoxes>
-                        {extras.map((extra) => {
+                        {extras.map((extra, index) => {
                             let lowerExtra = TrToEn(extra)
                                 .replace(" ", "");
                             lowerExtra = lowerExtra.charAt(0).toLowerCase() + lowerExtra.slice(1);
-                            return <Checkboxes>
-                                <input onChange={handleChange} type="checkbox" id={lowerExtra} name={lowerExtra} value={extra} />
-                                <label for={lowerExtra}>{extra}</label>
+                            return <Checkboxes key={index}>
+                                <input onChange={handleChange} type="checkbox" id={lowerExtra} name="malzemeler-checkbox" value={extra} />
+                                <label htmlFor={lowerExtra}>{extra}</label>
                             </Checkboxes>
                         })}
                     </AllCheckBoxes>
                 </ExtrasContainer>
                 <NameContainer>
                     <Titles>Adınız</Titles>
-                    <TextInput onChange={handleChange} type="text" name="isim" value={form.isim} />
+                    <TextInput onChange={handleChange} type="text" name="isim" value={form.isim} placeholder="Adınızı girin." />
                 </NameContainer>
                 <NoteContainer>
                     <Titles>Sipariş Notu</Titles>
@@ -317,7 +355,7 @@ export default function FormArea() {
                 <PaymentContainer>
                     <ButtonGroup>
                         <YellowButton type="button" id="azalt" onClick={adjustCount}>-</YellowButton>
-                        <Button type="button">{form.count}</Button>
+                        <Button type="button">{form.howMany}</Button>
                         <YellowButton type="button" id="arttir" onClick={adjustCount}>+</YellowButton>
                     </ButtonGroup>
                     <ResultContainer>
@@ -328,9 +366,9 @@ export default function FormArea() {
                         </Prices>
                         <ResultPrice>
                             <PriceText>Toplam</PriceText>
-                            <PriceText>{(checkedCount * 5 + price) * form.count}₺</PriceText>
+                            <PriceText>{(checkedCount * 5 + price) * form.howMany}₺</PriceText>
                         </ResultPrice>
-                        <Submit type="submit" id="order-button">SİPARİŞ VER</Submit>
+                        <Submit type="submit" id="order-button" disabled={!isValid}>SİPARİŞ VER</Submit>
                     </ResultContainer>
                 </PaymentContainer>
             </form>
