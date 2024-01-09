@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import styled from "styled-components";
+import food1 from "../assets/adv-aseets/food-1.png"
+import food2 from "../assets/adv-aseets/food-2.png"
+import food3 from "../assets/adv-aseets/food-3.png"
+import Card from "./Card";
+
 
 const TitleContainer = styled.div`
     max-width: 1320px;
@@ -76,10 +81,15 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 135px;
 `;
 
-const StyledNavLink = styled(NavLink)`
-
+const CardContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    max-width: 1350px;
+    flex-wrap: wrap;
 `;
 
 const initialButtons = {
@@ -100,11 +110,37 @@ const emptyButtons = {
     button6: false,
 }
 
+
+const cardData = [
+    {
+        image: "food-1.png",
+        name: "Terminal Pizza",
+        rate: 4.9,
+        rateCount: 200,
+        price: 60
+    },
+    {
+        image: "food-2.png",
+        name: "Position Absolute Acı Pizza",
+        rate: 4.9,
+        rateCount: 928,
+        price: 85
+    },
+    {
+        image: "food-3.png",
+        name: "useEffectTavukluBurger",
+        rate: 4.9,
+        rateCount: 462,
+        price: 75
+    }
+]
+
+
 export default function Cards() {
-    
+
     const [buttons, setButtons] = useState(initialButtons);
     const handleClick = (event) => {
-        let {id} = event.target
+        let { id } = event.target
         console.log("buradayim")
         setButtons({ ...emptyButtons, [`${id}`]: true });
         console.log(buttons);
@@ -120,25 +156,18 @@ export default function Cards() {
                 <Title>Acıktıran Kodlara Doyuran Lezzetler</Title>
             </TitleContainer>
             <NavBar>
-                <FoodCategories onClick={(e)=>handleClick(e)} id="button1" className={buttons.button1 ? "active" : "false"}><Icon onClick={(e)=>handleClick(e)} id="button1" src={require("../assets/adv-aseets/icons/1.svg")} /><FoodCategoryText onClick={(e)=>handleClick(e)} id="button1"><span>YENİ!</span> Kore</FoodCategoryText></FoodCategories>
-                <FoodCategories onClick={(e)=>handleClick(e)} id="button2" className={buttons.button2 ? "active" : "false"}><Icon onClick={(e)=>handleClick(e)} id="button2" src={require("../assets/adv-aseets/icons/2.svg")} /><FoodCategoryText onClick={(e)=>handleClick(e)} id="button2">Pizza</FoodCategoryText></FoodCategories>
-                <FoodCategories onClick={(e)=>handleClick(e)} id="button3" className={buttons.button3 ? "active" : "false"}><Icon onClick={(e)=>handleClick(e)} id="button3" src={require("../assets/adv-aseets/icons/3.svg")} /><FoodCategoryText onClick={(e)=>handleClick(e)} id="button3">Burger</FoodCategoryText></FoodCategories>
-                <FoodCategories onClick={(e)=>handleClick(e)} id="button4" className={buttons.button4 ? "active" : "false"}><Icon onClick={(e)=>handleClick(e)} id="button4" src={require("../assets/adv-aseets/icons/4.svg")} /><FoodCategoryText onClick={(e)=>handleClick(e)} id="button4">Kızartmalar</FoodCategoryText></FoodCategories>
-                <FoodCategories onClick={(e)=>handleClick(e)} id="button5" className={buttons.button5 ? "active" : "false"}><Icon onClick={(e)=>handleClick(e)} id="button5" src={require("../assets/adv-aseets/icons/5.svg")} /><FoodCategoryText onClick={(e)=>handleClick(e)} id="button5">Fast Food</FoodCategoryText></FoodCategories>
-                <FoodCategories onClick={(e)=>handleClick(e)} id="button6" className={buttons.button6 ? "active" : "false"}><Icon onClick={(e)=>handleClick(e)} id="button6" src={require("../assets/adv-aseets/icons/6.svg")} /><FoodCategoryText onClick={(e)=>handleClick(e)} id="button6">Gazlı İçecek</FoodCategoryText></FoodCategories>
+                <FoodCategories onClick={(e) => handleClick(e)} id="button1" className={buttons.button1 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button1" src={require("../assets/adv-aseets/icons/1.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button1"><span>YENİ!</span> Kore</FoodCategoryText></FoodCategories>
+                <FoodCategories onClick={(e) => handleClick(e)} id="button2" className={buttons.button2 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button2" src={require("../assets/adv-aseets/icons/2.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button2">Pizza</FoodCategoryText></FoodCategories>
+                <FoodCategories onClick={(e) => handleClick(e)} id="button3" className={buttons.button3 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button3" src={require("../assets/adv-aseets/icons/3.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button3">Burger</FoodCategoryText></FoodCategories>
+                <FoodCategories onClick={(e) => handleClick(e)} id="button4" className={buttons.button4 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button4" src={require("../assets/adv-aseets/icons/4.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button4">Kızartmalar</FoodCategoryText></FoodCategories>
+                <FoodCategories onClick={(e) => handleClick(e)} id="button5" className={buttons.button5 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button5" src={require("../assets/adv-aseets/icons/5.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button5">Fast Food</FoodCategoryText></FoodCategories>
+                <FoodCategories onClick={(e) => handleClick(e)} id="button6" className={buttons.button6 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button6" src={require("../assets/adv-aseets/icons/6.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button6">Gazlı İçecek</FoodCategoryText></FoodCategories>
             </NavBar>
-            {/* CARD diye yeni bir component'!'^#$£>
-            <Card>
-                <FoodImage></FoodImage>
-                <FoodName></FoodName>
-                {Burası map ile}
-                <RatePriceContainer>
-                    <Point></Point>
-                    <Rate></Rate>
-                    <Price></Price>
-                </RatePriceContainer>
-            </Card>
-             */}
+            <CardContainer>
+                {cardData.map((item, index)=>{
+                    return <Card key={index} cardData={item}/>
+                })}
+            </CardContainer>
         </Container>
     )
 }
