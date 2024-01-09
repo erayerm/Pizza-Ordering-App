@@ -13,11 +13,20 @@ const Title = styled.h1`
         text-transform: uppercase;
         text-align: center;
         margin:0;
-        margin-top: 35px;
         margin-bottom: 17px;
         letter-spacing: 1.5px;
 
     `;
+const FirsatiKacirmaText = styled.p`
+    font-family: 'Satisfy', cursive;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    margin: 0;
+    margin-top: 50px;
+    color: #FDC913;
+`;
 
 const Hero = styled.div`
     width:100vw;
@@ -34,7 +43,7 @@ const ItemsContainer = styled.div`
         width: 30vw;
         min-width: 636px;
         margin: 0 auto;
-        padding-top: 120px;
+        padding-top: 60px;
     `;
 
 const Button = styled.button`
@@ -51,14 +60,48 @@ const Logo = styled.img`
         margin: auto 0;
     `;
 
-const FirsatiKacirmaText = styled.p`
-    font-family: 'Satisfy', cursive;
-    font-size: 32px;
+
+
+const NavBarContainer = styled.div`
+    height: 100px;
+    background: #FFF;
+`;
+
+const NavBar = styled.nav`
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    max-width: 1200px;
+    margin: auto auto;
+    flex-wrap: wrap;
+`;
+
+const FoodCategories = styled.a`
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-basis: 200px;
+    cursor: pointer;
+    @media (max-width: 1200px){
+        flex-basis: 30%;
+    }
+`;
+const FoodCategoryText = styled.p`
+    color: #292929;
+    font-family: Barlow;
+    font-size: 18px;
     font-style: normal;
-    font-weight: 400;
-    text-align: center;
-    margin: 0;
-    color: #FDC913;
+    font-weight: 500;
+`;
+
+const MainSectionContainer = styled.div`
+    
+`;
+
+const Icon = styled.img`
+    width: 42px;
+    height: 42px;
 `;
 
 export default function Main() {
@@ -67,6 +110,7 @@ export default function Main() {
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
                 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+                @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap');
             </style>
             <Hero>
                 <ItemsContainer>
@@ -82,12 +126,12 @@ export default function Main() {
             </Hero>
             <NavBarContainer>
                 <NavBar>
-                    <FoodCategories></FoodCategories>
-                    <FoodCategories></FoodCategories>
-                    <FoodCategories></FoodCategories>
-                    <FoodCategories></FoodCategories>
-                    <FoodCategories></FoodCategories>
-                    <FoodCategories></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/1.svg")} /><FoodCategoryText><span>YENİ!</span> Kore</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/2.svg")} /><FoodCategoryText>Pizza</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/3.svg")} /><FoodCategoryText>Burger</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/4.svg")} /><FoodCategoryText>Kızartmalar</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/5.svg")} /><FoodCategoryText>Fast Food</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/6.svg")} /><FoodCategoryText>Gazlı İçecek</FoodCategoryText></FoodCategories>
                 </NavBar>
             </NavBarContainer>
             <MainSectionContainer>
