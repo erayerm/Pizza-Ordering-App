@@ -19,12 +19,13 @@ const Title = styled.h1`
 
     `;
 
-const Container = styled.div`
+const Hero = styled.div`
     width:100vw;
     height:100vh;
     background-color: red;
     background-image: url(${banner});
     background-size: cover;
+    background-position: center;
 `;
 const ItemsContainer = styled.div`
         display: flex;
@@ -50,15 +51,27 @@ const Logo = styled.img`
         margin: auto 0;
     `;
 
+const FirsatiKacirmaText = styled.p`
+    font-family: 'Satisfy', cursive;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    margin: 0;
+    color: #FDC913;
+`;
+
 export default function Main() {
     return (
         <>
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+                @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
             </style>
-            <Container>
+            <Hero>
                 <ItemsContainer>
                     <Logo src={logo} alt="logo" />
+                    <FirsatiKacirmaText>fırsatı kaçırma</FirsatiKacirmaText>
                     <Title>
                         KOD ACIKTIRIR PİZZA, DOYURUR
                     </Title>
@@ -66,7 +79,100 @@ export default function Main() {
                         <Button id="order-pizza">ACIKTIM</Button>
                     </Link>
                 </ItemsContainer>
-            </Container>
+            </Hero>
+            <NavBarContainer>
+                <NavBar>
+                    <FoodCategories></FoodCategories>
+                    <FoodCategories></FoodCategories>
+                    <FoodCategories></FoodCategories>
+                    <FoodCategories></FoodCategories>
+                    <FoodCategories></FoodCategories>
+                    <FoodCategories></FoodCategories>
+                </NavBar>
+            </NavBarContainer>
+            <MainSectionContainer>
+            {/*   CARDS COMPONENT
+            <CardsContainer>
+                <BiggerCard>
+                    <TitleOfCard></TitleOfCard>
+                    <InfoOfCard></InfoOfCard>
+                    <ButtonOfCard></ButtonOfCard>
+                </BiggerCard>
+                <Card>
+                    <TitleOfCard></TitleOfCard>
+                    <ButtonOfCard></ButtonOfCard>
+                </Card>
+                <Card>
+                    <TitleOfCard></TitleOfCard>
+                    <ButtonOfCard></ButtonOfCard>
+                </Card>
+            </CardsContainer>
+            */}
+            {/*
+            
+            
+             */}
+             {/* BASKA BIR CARD COMPONENT
+                <EnCokText>en çopk paketlenen menüler</EnCokText>
+                <Title>Acıktıran Kodlara Doyuran Lezzetler</Title>
+                <NavBar>
+                    <FoodCategories></FoodCategories>
+                    <FoodCategories></FoodCategories>
+                    <FoodCategories></FoodCategories>
+                    <FoodCategories></FoodCategories>
+                    <FoodCategories></FoodCategories>
+                    <FoodCategories></FoodCategories>
+                </NavBar>
+                <Card>
+                    <FoodImage></FoodImage>
+                    <FoodName></FoodName>
+                    {Burası map ile}
+                    <RatePriceContainer>
+                        <Point></Point>
+                        <Rate></Rate>
+                        <Price></Price>
+                    </RatePriceContainer>
+                </Card>
+            */}
+            </MainSectionContainer>
+            {/* 
+            <FooterSection>
+                <TopSection>
+                        <InfoContainer>
+                            <LeftContainer>
+                                <Logo></Logo>
+                                <Infos><Icon></Icon><InfoText>341 Londonderry Road, Istanbul Türkiye</InfoText></Infos>
+                                <Infos><Icon></Icon><InfoText>aciktim@teknolojikyemekler.com</InfoText></Infos>
+                                <Infos><Icon></Icon><InfoText>+90 216 123 45 67</InfoText></Infos>
+                            </LeftContainer>
+                            <RightContainer>
+                                <MenuTitle>Sıccacık Menuler</MenuTitle>
+                                <FoodNames>Terminal Pizza</FoodNames>
+                                <FoodNames>5 Kişilik Hackathon Pizza</FoodNames>
+                                <FoodNames>useEffectTavukluPizza</FoodNames>
+                                <FoodNames>Beyaz Console Frosty</FoodNames>
+                                <FoodNames>Testler Geçti Mutlu Burger</FoodNames>
+                                <FoodNames>Position Absolute Acı Burger</FoodNames>
+                            </RightContainer>
+                        </InfoContainer>
+                        <InstagramContainer>
+                            <InstagramText>Instagram</InstagramText>
+                        <InstagramImageContainer>
+                            <IgImage></IgImage>
+                            <IgImage></IgImage>
+                            <IgImage></IgImage>
+                            <IgImage></IgImage>
+                            <IgImage></IgImage>
+                            <IgImage></IgImage>
+                        </InstagramImageContainer>
+                        </InstagramContainer>
+                </TopSection>
+                <BottomSection>
+                    <CopyRightText>c 2023 Teknolojik Yemekler.</CopyRightText>
+                    <TwitterIcon>Kuş!</TwitterIcon>
+                </BottomSection>
+            </FooterSection>
+            */}
         </>
     )
 }

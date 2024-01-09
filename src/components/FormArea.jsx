@@ -296,9 +296,8 @@ export default function FormArea({setPropForm}) {
             }
         }else{
             axios.post('https://reqres.in/api/users', form).then((res) => {
-                console.log(res.data);
-            });
-            setPropForm({...form});
+                setPropForm({ ...res.data });
+            }).catch(err=>console.error(err));
             history.push("/success");
         }
     }

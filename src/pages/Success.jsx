@@ -82,6 +82,7 @@ font-weight: 400;
 line-height: 24.762px; /* 154.762% */
 `;
 const ReceiptContainer = styled.div`
+    margin-top: 70px;
     width: 288px;
     height: 191px;
     border-radius: 6px;
@@ -98,12 +99,14 @@ font-size: 20px;
 font-style: normal;
 font-weight: 600;
 line-height: 24.762px;
+margin-bottom: 20px;
 `;
 const PricesContainer = styled.div`
 display: flex;
 justify-content: space-between;
 `;
 const Prices = styled.div`
+margin-bottom: 8px;
 font-family: Barlow;
 font-size: 18px;
 font-style: normal;
@@ -128,9 +131,9 @@ const extras = {
     "kanadaJambonu": "Kanada Jambonu",
     "domates": "Domates",
     "jalepeno": "Jalepeno",
-    "sucukDeğil": "Sucuk Değil"
+    "sucukDegil": "Sucuk Değil"
 }
-const dummyData = {
+let dummyData = {
     ananas: false,
     biber: true,
     createdAt: "2024-01-08T20:48:29.771Z",
@@ -156,7 +159,7 @@ const dummyData = {
 }
 
 export default function Success({ propForm }) {
-
+    dummyData = {...propForm};
     /*
     let formDataArray = Object.keys(propForm).map((key) => [key, propForm[key]]);
     formDataArray = formDataArray.filter(item => item[1] === true);
