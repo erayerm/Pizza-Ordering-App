@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import styled from "styled-components"
-
+import "./FormArea.css"
 
 
 const extras = [
@@ -207,6 +207,11 @@ const HataMesaji = styled.p`
     color: red;
 `;
 
+const SizeFlex = styled.div`
+    display: flex;
+    gap: 50px;
+`;
+
 const initialForm = {
     isim: "",
     size: "",
@@ -351,20 +356,29 @@ export default function FormArea({setPropForm}) {
         <>
             <form id="pizza-form" onSubmit={handleSubmit}>
                 <SizeHamurContainer>
+                
                     <SizeContainer ref={sizeRef}>
                         <Titles>Boyut Seç <RedStar>*</RedStar></Titles>
-                        <div>
-                            <input data-cy="kucuk" onChange={handleChange} type="radio" id="kucuk" name="size" value="Küçük" />
-                            <label htmlFor="kucuk">Küçük</label>
-                        </div>
-                        <div>
-                            <input data-cy="orta" onChange={handleChange} type="radio" id="orta" name="size" value="Orta" />
-                            <label htmlFor="orta">Orta</label>
-                        </div>
-                        <div>
-                            <input data-cy="buyuk" onChange={handleChange} type="radio" id="buyuk" name="size" value="Büyük" />
-                            <label htmlFor="buyuk">Büyük</label>
-                        </div>
+                        <SizeFlex>
+                            <div>
+                                <label htmlFor="kucuk" class="container">&
+                                    <input data-cy="kucuk" onChange={handleChange} type="radio" id="kucuk" name="size" value="Küçük" />
+                                    <span className="checkmark">S</span>
+                                </label>
+                            </div>
+                            <div>
+                                <label htmlFor="orta" class="container">&
+                                    <input data-cy="orta" onChange={handleChange} type="radio" id="orta" name="size" value="Orta" />
+                                    <span className="checkmark">M</span>
+                                </label>
+                            </div>
+                            <div>
+                                <label htmlFor="buyuk" class="container">&
+                                    <input data-cy="buyuk" onChange={handleChange} type="radio" id="buyuk" name="size" value="Büyük" />
+                                    <span className="checkmark">L</span>
+                                </label>
+                            </div>
+                        </SizeFlex>
                         {buttonClicked && !errors.size && <HataMesaji>{errorMessages.size}</HataMesaji>}
                     </SizeContainer>
                     <HamurContainer ref={hamurRef}>
