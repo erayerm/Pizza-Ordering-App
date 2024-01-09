@@ -5,6 +5,7 @@ import logo from "../assets/logo.svg"
 import { Link } from "react-router-dom";
 import BigCards from "../components/BigCards";
 import Cards from "../components/Cards";
+import Footer from "../components/Footer";
 
 const Title = styled.h1`
         color: #FFF;
@@ -143,44 +144,7 @@ export default function Main() {
                 <BigCards/>
                 <Cards/>
             </MainSectionContainer>
-            {/* 
-            <FooterSection>
-                <TopSection>
-                        <InfoContainer>
-                            <LeftContainer>
-                                <Logo></Logo>
-                                <Infos><Icon></Icon><InfoText>341 Londonderry Road, Istanbul Türkiye</InfoText></Infos>
-                                <Infos><Icon></Icon><InfoText>aciktim@teknolojikyemekler.com</InfoText></Infos>
-                                <Infos><Icon></Icon><InfoText>+90 216 123 45 67</InfoText></Infos>
-                            </LeftContainer>
-                            <RightContainer>
-                                <MenuTitle>Sıccacık Menuler</MenuTitle>
-                                <FoodNames>Terminal Pizza</FoodNames>
-                                <FoodNames>5 Kişilik Hackathon Pizza</FoodNames>
-                                <FoodNames>useEffectTavukluPizza</FoodNames>
-                                <FoodNames>Beyaz Console Frosty</FoodNames>
-                                <FoodNames>Testler Geçti Mutlu Burger</FoodNames>
-                                <FoodNames>Position Absolute Acı Burger</FoodNames>
-                            </RightContainer>
-                        </InfoContainer>
-                        <InstagramContainer>
-                            <InstagramText>Instagram</InstagramText>
-                        <InstagramImageContainer>
-                            <IgImage></IgImage>
-                            <IgImage></IgImage>
-                            <IgImage></IgImage>
-                            <IgImage></IgImage>
-                            <IgImage></IgImage>
-                            <IgImage></IgImage>
-                        </InstagramImageContainer>
-                        </InstagramContainer>
-                </TopSection>
-                <BottomSection>
-                    <CopyRightText>c 2023 Teknolojik Yemekler.</CopyRightText>
-                    <TwitterIcon>Kuş!</TwitterIcon>
-                </BottomSection>
-            </FooterSection>
-            */}
+            <Footer/>
         </>
     )
 }
