@@ -19,7 +19,7 @@ const extras = [
     "Kanada Jambonu",
     "Domates",
     "Jalepeno",
-    "Sucuk Değil"
+    "Zeytin"
 ]
 
 
@@ -69,14 +69,14 @@ const Checkboxes = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: 28.8px; /* 180% */
+    margin-right: 80px;
 `;
 const AllCheckBoxes = styled.div`
-    height: 200px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     gap: 13px;
-
 `;
 
 const Info = styled.p`
@@ -99,26 +99,10 @@ const NoteContainer = styled.div`
 `;
 
 const NameContainer = styled.div`
-    margin-top:40px;
+    margin-top:20px;
     margin-bottom:50px;
     width: 100%;
 `;
-
-const TextArea = styled.textarea`
-    height: 50px;
-    width:100%;
-    border: 1px solid #D9D9D9;
-    border-radius: 6px;
-    padding: 10px;
-`;
-
-const TextInput = styled.input`
-    width:50%;
-    border: 1px solid #D9D9D9;
-    border-radius: 6px;
-    padding: 10px;
-`;
-
 
 const PaymentContainer = styled.div`
     margin-top:38px;
@@ -133,20 +117,25 @@ const ResultContainer = styled.div`
     flex: 7;
     border: 1px solid #D9D9D9;
     border-radius: 6px;
+    background-color: #FAF7F2;
 `;
 
 const Button = styled.button`
     height: 50px;
     width: 40px;
     border: none;
-    border-top: 0.5px solid gray;
-    border-bottom: 0.5px solid gray;
-    background-color: white;
+    background-color: #FAF7F2;
+    color: #000;
+    text-align: center;
+    font-family: Barlow;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
 `;
 const YellowButton = styled(Button)`
-    cursor:pointer; 
+    cursor: pointer; 
     border: none;
-    background-color: #FDC913;
+    background-color: #FAF7F2;
     &:first-child{
         border-radius: 6px 0px 0px 6px;
     }
@@ -361,20 +350,20 @@ export default function FormArea({setPropForm}) {
                         <Titles>Boyut Seç <RedStar>*</RedStar></Titles>
                         <SizeFlex>
                             <div>
-                                <label htmlFor="kucuk" class="container">&
-                                    <input data-cy="kucuk" onChange={handleChange} type="radio" id="kucuk" name="size" value="Küçük" />
+                                <label htmlFor="kucuk" class="container">S
+                                    <input data-cy="kucuk" onChange={handleChange} type="radio" id="kucuk" name="size" value="S" />
                                     <span className="checkmark">S</span>
                                 </label>
                             </div>
                             <div>
-                                <label htmlFor="orta" class="container">&
-                                    <input data-cy="orta" onChange={handleChange} type="radio" id="orta" name="size" value="Orta" />
+                                <label htmlFor="orta" class="container">M
+                                    <input data-cy="orta" onChange={handleChange} type="radio" id="orta" name="size" value="M" />
                                     <span className="checkmark">M</span>
                                 </label>
                             </div>
                             <div>
-                                <label htmlFor="buyuk" class="container">&
-                                    <input data-cy="buyuk" onChange={handleChange} type="radio" id="buyuk" name="size" value="Büyük" />
+                                <label htmlFor="buyuk" class="container">L
+                                    <input data-cy="buyuk" onChange={handleChange} type="radio" id="buyuk" name="size" value="L" />
                                     <span className="checkmark">L</span>
                                 </label>
                             </div>
@@ -383,8 +372,8 @@ export default function FormArea({setPropForm}) {
                     </SizeContainer>
                     <HamurContainer ref={hamurRef}>
                         <Titles>Hamur Seç <RedStar>*</RedStar></Titles>
-                        <select data-cy="select" name="hamur" id="hamur" defaultValue="pickOne" onChange={handleChange}>
-                            <option name="hamur" value="pickOne" disabled>Hamur Kalınlığı</option>
+                        <select class="select" data-cy="select" name="hamur" id="hamur" defaultValue="pickOne" onChange={handleChange}>
+                            <option name="hamur" value="pickOne" disabled>--Hamur Kalınlığı Seç--</option>
                             <option name="hamur" value="Kalın Hamur">Kalın Hamur</option>
                             <option name="hamur" value="İnce Hamur">İnce Hamur</option>
                             <option name="hamur" value="İpince Hamur">İpince Hamur</option>
@@ -402,8 +391,10 @@ export default function FormArea({setPropForm}) {
                                 .replaceAll(" ", "");
                             lowerExtra = lowerExtra.charAt(0).toLowerCase() + lowerExtra.slice(1);
                             return <Checkboxes key={index}>
+                                <label class="containerCheckbox" htmlFor={lowerExtra}>{extra}
                                 <input data-cy={"checkbox"+(index+1)} onChange={handleChange} type="checkbox" id={lowerExtra} name={lowerExtra} value={extra} />
-                                <label htmlFor={lowerExtra}>{extra}</label>
+                                    <span class="checkmarkCheckbox"></span>
+                                </label>
                             </Checkboxes>
                         })}
                     </AllCheckBoxes>
@@ -413,12 +404,12 @@ export default function FormArea({setPropForm}) {
                 </ExtrasContainer>
                 <NameContainer ref={isimRef}>
                     <Titles>Adınız</Titles>
-                    <TextInput onChange={handleChange} data-cy="isim" type="text" name="isim" value={form.isim} placeholder="Adınızı girin." />
+                    <input class="name" onChange={handleChange} data-cy="isim" type="text" name="isim" value={form.isim} placeholder="Adınızı girin." />
                     {buttonClicked && !errors.isim && <HataMesaji>{errorMessages.isim}</HataMesaji>}
                 </NameContainer>
                 <NoteContainer>
                     <Titles>Sipariş Notu</Titles>
-                    <TextArea onChange={handleChange} value={form.siparisNotu} id="note" name="siparisNotu" placeholder="Siparişine eklemek istediğin bir not var mı?"></TextArea>
+                    <textarea class="note" onChange={handleChange} value={form.siparisNotu} id="note" name="siparisNotu" placeholder="Siparişine eklemek istediğin bir not var mı?"></textarea>
                 </NoteContainer>
                 <hr />
                 <PaymentContainer>

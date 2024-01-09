@@ -62,3 +62,121 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+
+
+/* The container */
+.containerCheckbox {
+    display: block;
+    position: relative;
+    padding-left: 55px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.containerCheckbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmarkCheckbox {
+    position: absolute;
+    top: -8px;
+    left: 0;
+    height: 45px;
+    width: 45px;
+    border-radius: 6px;
+    background-color: #FAF7F2;
+}
+
+/* On mouse-over, add a grey background color */
+.containerCheckbox:hover input~.checkmarkCheckbox {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.containerCheckbox input:checked~.checkmarkCheckbox {
+    background-color: #FDC913;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmarkCheckbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.containerCheckbox input:checked~.checkmarkCheckbox:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.containerCheckbox .checkmarkCheckbox:after {
+    left: 18px;
+    top: 13px;
+    width: 6px;
+    height: 10px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.select{
+    width: 283px;
+    height: 60px;
+    border-radius: 6px;
+    border:none;
+    background-color: #FAF7F2;
+    color: #5F5F5F;
+    font-family: Barlow;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 56px;
+    padding-left: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 48%;
+}
+
+.name{
+    width: 100%;
+    background-color: #FAF7F2;
+    border: none;
+    border-radius: 6px;
+    padding: 20px 20px;
+    color: #5F5F5F;
+    font-family: Barlow;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.note{
+    width: 100%;
+    background-color: #FAF7F2;
+    border: none;
+    border-radius: 6px;
+    padding: 20px 20px;
+    color: #5F5F5F;
+    font-family: Barlow;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+}

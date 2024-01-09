@@ -131,7 +131,7 @@ const extras = {
     "kanadaJambonu": "Kanada Jambonu",
     "domates": "Domates",
     "jalepeno": "Jalepeno",
-    "sucukDegil": "Sucuk Değil"
+    "zeytin": "Zeytin"
 }
 /*
 let dummyData = {
