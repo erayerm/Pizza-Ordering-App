@@ -16,11 +16,11 @@ const FoodImage = styled.img`
     align-self: center;
 `;
 const FoodName = styled.p`
-color: #292929;
-font-family: Barlow;
-font-size: 22px;
-font-style: normal;
-font-weight: 600;
+    color: #292929;
+    font-family: "Barlow";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
 `;
 const RatePriceContainer = styled.div`
     display: flex;
@@ -28,40 +28,37 @@ const RatePriceContainer = styled.div`
 `;
 const Rate = styled.p`
     color: rgba(27, 27, 27, 0.70);
-
-font-family: Barlow;
-font-size: 16px;
-font-style: normal;
-font-weight: 600;
+    font-family: "Barlow";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
 `;
 const RateCount = styled.p`
-color: rgba(27, 27, 27, 0.70);
-
-font-family: Barlow;
-font-size: 16px;
-font-style: normal;
-font-weight: 600;
+    color: rgba(27, 27, 27, 0.70);
+    font-family: "Barlow";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
 `;
 const Price = styled.p`
-color: #292929;
-font-family: Barlow;
-font-size: 20px;
-font-style: normal;
-font-weight: 700;
+    color: #292929;
+    font-family: Barlow;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
 `;
 
-export default function Card({cardData}){
-    console.log(cardData);
-    return(
+export default function Card({ cardData }) {
+    return (
         <>
             <Container>
-            <FoodImage src={require(`../assets/adv-aseets/${cardData.image}`)} />
-            <FoodName>{cardData.name}</FoodName>
-            <RatePriceContainer>
-                <Rate>{cardData.rate}</Rate>
-                <RateCount>{cardData.rateCount}</RateCount>
-                <Price>{cardData.price}₺</Price>
-            </RatePriceContainer>
+                <FoodImage src={require(`../assets/adv-aseets/${cardData.image}`)} />
+                <FoodName>{cardData.name}</FoodName>
+                <RatePriceContainer>
+                    <Rate>{cardData.rate}</Rate>
+                    <RateCount>{cardData.rateCount}</RateCount>
+                    <Price>{cardData.price}₺</Price>
+                </RatePriceContainer>
             </Container>
         </>
     )

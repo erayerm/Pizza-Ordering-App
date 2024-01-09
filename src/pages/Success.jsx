@@ -133,6 +133,7 @@ const extras = {
     "jalepeno": "Jalepeno",
     "sucukDegil": "Sucuk Değil"
 }
+/*
 let dummyData = {
     ananas: false,
     biber: true,
@@ -157,26 +158,21 @@ let dummyData = {
     tavukIzgara: false,
     pizzaPrice: 85.50,
 }
-
+*/
 export default function Success({ propForm }) {
-    dummyData = {...propForm};
-    /*
+
     let formDataArray = Object.keys(propForm).map((key) => [key, propForm[key]]);
     formDataArray = formDataArray.filter(item => item[1] === true);
-    */
-   //temporary for testing
+    
+    //temporary for testing
+    /*
+    dummyData = {...propForm};
     let formDataArray = Object.keys(dummyData).map((key) => [key, dummyData[key]]);
     formDataArray = formDataArray.filter(item => item[1] === true);
-
+    */
     return (
         <>
             <Container>
-                {/*console.log(propForm)*/}
-                <style>
-                    @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
-                    @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
-                    @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap');
-                </style>
                 <Logo>
                     <img src={logo} alt="logo" />
                 </Logo>
@@ -192,8 +188,8 @@ export default function Success({ propForm }) {
                 <PizzaDetailsContainer>
                     <PizzaName>Position Absolute Acı Pizza</PizzaName>
                     <OtherAttributesContainer>
-                        <Attribute><ThinText>Boyut: </ThinText>{dummyData.size}</Attribute>
-                        <Attribute><ThinText>Hamur: </ThinText>{dummyData.hamur}</Attribute>
+                        <Attribute><ThinText>Boyut: </ThinText>{propForm.size}</Attribute>
+                        <Attribute><ThinText>Hamur: </ThinText>{propForm.hamur}</Attribute>
                         <Attribute><ThinText>Ek Malzemeler:</ThinText>{formDataArray.map((item, index) => {
                             let returningString = extras[item[0]] + ", ";
                             if (index + 1 === formDataArray.length) {
@@ -211,7 +207,7 @@ export default function Success({ propForm }) {
                     </PricesContainer>
                     <PricesContainer>
                         <Prices>Toplam</Prices>
-                        <Prices>{(formDataArray.length * 5 + dummyData.pizzaPrice) * dummyData.howMany}₺</Prices>
+                        <Prices>{(formDataArray.length * 5 + propForm.pizzaPrice) * propForm.howMany}₺</Prices>
                     </PricesContainer>
                 </ReceiptContainer>
             </Container>

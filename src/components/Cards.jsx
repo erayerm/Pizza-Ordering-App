@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import styled from "styled-components";
-import food1 from "../assets/adv-aseets/food-1.png"
-import food2 from "../assets/adv-aseets/food-2.png"
-import food3 from "../assets/adv-aseets/food-3.png"
 import Card from "./Card";
 
 
@@ -11,24 +7,23 @@ const TitleContainer = styled.div`
     max-width: 1320px;
 `;
 const EnCokText = styled.p`
-color: #CE2829;
-
-text-align: center;
-font-family: Satisfy;
-font-size: 32px;
-font-style: normal;
-font-weight: 400;
-margin:0;
+    color: #CE2829;
+    text-align: center;
+    font-family: "Satisfy";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    margin:0;
 `;
 const Title = styled.p`
-color: #292929;
-text-align: center;
-font-family: Barlow;
-font-size: 42px;
-font-style: normal;
-font-weight: 600;
-margin-top: 0;
-margin-bottom: 45px;
+    color: #292929;
+    text-align: center;
+    font-family: "Barlow";
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 45px;
 `;
 const FoodCategories = styled.div`
     text-decoration: none;
@@ -71,7 +66,7 @@ const Icon = styled.img`
 `;
 const FoodCategoryText = styled.p`
     margin: 0px;
-    font-family: Barlow;
+    font-family: "Barlow";
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
@@ -140,17 +135,12 @@ export default function Cards() {
 
     const [buttons, setButtons] = useState(initialButtons);
     const handleClick = (event) => {
-        let { id } = event.target
-        console.log("buradayim")
+        let { id } = event.target;
         setButtons({ ...emptyButtons, [`${id}`]: true });
-        console.log(buttons);
     }
     return (
 
         <Container>
-            <style>
-                @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
-            </style>
             <TitleContainer>
                 <EnCokText>en çok paketlenen menüler</EnCokText>
                 <Title>Acıktıran Kodlara Doyuran Lezzetler</Title>
@@ -164,8 +154,8 @@ export default function Cards() {
                 <FoodCategories onClick={(e) => handleClick(e)} id="button6" className={buttons.button6 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button6" src={require("../assets/adv-aseets/icons/6.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button6">Gazlı İçecek</FoodCategoryText></FoodCategories>
             </NavBar>
             <CardContainer>
-                {cardData.map((item, index)=>{
-                    return <Card key={index} cardData={item}/>
+                {cardData.map((item, index) => {
+                    return <Card key={index} cardData={item} />
                 })}
             </CardContainer>
         </Container>

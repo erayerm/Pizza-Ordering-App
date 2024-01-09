@@ -116,11 +116,7 @@ const Icon = styled.img`
 export default function Main() {
     return (
         <>
-            <style>
-                @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
-                @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
-                @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap');
-            </style>
+            
             <Hero>
                 <ItemsContainer>
                     <Logo src={logo} alt="logo" />
@@ -146,49 +142,6 @@ export default function Main() {
             <MainSectionContainer>
                 <BigCards/>
                 <Cards/>
-            {/*   CARDS COMPONENT
-            <CardsContainer>
-                <BiggerCard>
-                    <TitleOfCard></TitleOfCard>
-                    <InfoOfCard></InfoOfCard>
-                    <ButtonOfCard></ButtonOfCard>
-                </BiggerCard>
-                <Card>
-                    <TitleOfCard></TitleOfCard>
-                    <ButtonOfCard></ButtonOfCard>
-                </Card>
-                <Card>
-                    <TitleOfCard></TitleOfCard>
-                    <ButtonOfCard></ButtonOfCard>
-                </Card>
-            </CardsContainer>
-            */}
-            {/*
-            
-            
-             */}
-             {/* BASKA BIR CARD COMPONENT
-                <EnCokText>en çopk paketlenen menüler</EnCokText>
-                <Title>Acıktıran Kodlara Doyuran Lezzetler</Title>
-                <NavBar>
-                    <FoodCategories></FoodCategories>
-                    <FoodCategories></FoodCategories>
-                    <FoodCategories></FoodCategories>
-                    <FoodCategories></FoodCategories>
-                    <FoodCategories></FoodCategories>
-                    <FoodCategories></FoodCategories>
-                </NavBar>
-                <Card>
-                    <FoodImage></FoodImage>
-                    <FoodName></FoodName>
-                    {Burası map ile}
-                    <RatePriceContainer>
-                        <Point></Point>
-                        <Rate></Rate>
-                        <Price></Price>
-                    </RatePriceContainer>
-                </Card>
-            */}
             </MainSectionContainer>
             {/* 
             <FooterSection>

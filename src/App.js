@@ -7,6 +7,11 @@ const App = () => {
   const [propForm, setPropForm] = useState({});
   return (
     <>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap');
+      </style>
       <Switch>
         <Route path="/pizza">
           <Order setPropForm={setPropForm} />
