@@ -14,8 +14,8 @@ export default function MainSection({ setPropForm }) {
 
     return (
         <>
+            <InfoArea />
             <Container>
-                <InfoArea/>
                 <FormArea setPropForm={setPropForm} />
             </Container>
         </>
