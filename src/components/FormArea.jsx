@@ -119,7 +119,6 @@ const ButtonGroup = styled.div`
 
 const ResultContainer = styled.div`
     flex: 7;
-    border: 1px solid #D9D9D9;
     border-radius: 6px;
     background-color: #FAF7F2;
 `;
