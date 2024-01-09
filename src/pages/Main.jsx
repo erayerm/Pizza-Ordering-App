@@ -24,6 +24,7 @@ const Container = styled.div`
     height:100vh;
     background-color: red;
     background-image: url(${banner});
+    background-size: cover;
 `;
 const ItemsContainer = styled.div`
         display: flex;
