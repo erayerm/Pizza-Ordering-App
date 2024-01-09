@@ -4,6 +4,7 @@ import styled from "styled-components"
 import logo from "../assets/logo.svg"
 import { Link } from "react-router-dom";
 import BigCards from "../components/BigCards";
+import Cards from "../components/Cards";
 
 const Title = styled.h1`
         color: #FFF;
@@ -66,6 +67,9 @@ const Logo = styled.img`
 const NavBarContainer = styled.div`
     height: 100px;
     background: #FFF;
+    @media (max-width: 1200px){
+        height: 125px;
+    }
 `;
 
 const NavBar = styled.nav`
@@ -76,6 +80,7 @@ const NavBar = styled.nav`
     max-width: 1200px;
     margin: auto auto;
     flex-wrap: wrap;
+    
 `;
 
 const FoodCategories = styled.a`
@@ -84,6 +89,7 @@ const FoodCategories = styled.a`
     gap: 15px;
     flex-basis: 200px;
     cursor: pointer;
+    justify-content: center;
     @media (max-width: 1200px){
         flex-basis: 30%;
     }
@@ -139,6 +145,7 @@ export default function Main() {
             </NavBarContainer>
             <MainSectionContainer>
                 <BigCards/>
+                <Cards/>
             {/*   CARDS COMPONENT
             <CardsContainer>
                 <BiggerCard>

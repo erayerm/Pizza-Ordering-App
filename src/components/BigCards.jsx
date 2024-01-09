@@ -5,7 +5,6 @@ import kart2 from "../assets/adv-aseets/kart-2.png"
 import kart3 from "../assets/adv-aseets/kart-3.png"
 
 const CardsContainer = styled.div`
-    
     display: flex;
     flex-direction: column;
     max-width: 1300px;
@@ -16,8 +15,9 @@ const CardsContainer = styled.div`
     align-items:  center;
     margin-bottom: 100px;
     row-gap: 25px;
-    
-   
+    @media(max-width: 1350px){
+        max-height: none;
+    }
     
 `;
 const FirstTitle = styled.div`
