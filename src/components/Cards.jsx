@@ -56,6 +56,7 @@ const NavBar = styled.nav`
     gap:15px;
     @media (max-width: 1320px){
         row-gap: 10px;
+        justify-content: center;
     }
     margin-bottom: 50px;
 `;

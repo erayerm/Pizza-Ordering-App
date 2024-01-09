@@ -90,6 +90,10 @@ const Card = styled.div`
         background-image: url(${kart3}); 
     };
     background-size: cover;
+    @media(max-width:636px){
+        width: 90%;
+        background-position: right;
+    }
 `;
 
 
