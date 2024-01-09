@@ -57,6 +57,7 @@ const Button = styled.button`
         padding: 10px 50px;
         border: none;
         margin-top: 20px;
+        cursor: pointer;
     `;
 
 const Logo = styled.img`
