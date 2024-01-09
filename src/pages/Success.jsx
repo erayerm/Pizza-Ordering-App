@@ -133,43 +133,12 @@ const extras = {
     "jalepeno": "Jalepeno",
     "zeytin": "Zeytin"
 }
-/*
-let dummyData = {
-    ananas: false,
-    biber: true,
-    createdAt: "2024-01-08T20:48:29.771Z",
-    domates: false,
-    hamur: "İnce Hamur",
-    howMany: 1,
-    id: "203",
-    isim: "asdasd",
-    jalepeno: false,
-    kabak: false,
-    kanadaJambonu: false,
-    misir: false,
-    pepperoni: false,
-    sarimsak: true,
-    siparisNotu: "sadasd",
-    size: "Orta",
-    sogan: true,
-    sosis: false,
-    sucuk: true,
-    sucukDeğil: false,
-    tavukIzgara: false,
-    pizzaPrice: 85.50,
-}
-*/
+
 export default function Success({ propForm }) {
 
     let formDataArray = Object.keys(propForm).map((key) => [key, propForm[key]]);
     formDataArray = formDataArray.filter(item => item[1] === true);
     
-    //temporary for testing
-    /*
-    dummyData = {...propForm};
-    let formDataArray = Object.keys(dummyData).map((key) => [key, dummyData[key]]);
-    formDataArray = formDataArray.filter(item => item[1] === true);
-    */
     return (
         <>
             <Container>

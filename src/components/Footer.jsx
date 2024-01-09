@@ -10,11 +10,9 @@ import ig2 from "../assets/adv-aseets/insta/li-2.png"
 import ig3 from "../assets/adv-aseets/insta/li-3.png"
 import ig4 from "../assets/adv-aseets/insta/li-4.png"
 import ig5 from "../assets/adv-aseets/insta/li-5.png"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const Container = styled.div`
-height: 561px;
 background-color: #1A1A1A;
 color: #FFF;
 font-family: Barlow;
@@ -26,20 +24,25 @@ font-weight: 400;
 const TopSection = styled.div`
 display: flex;
 justify-content: space-between;
-max-width: 1320px;
+max-width: 1340px;
+padding-left: 10px;
+padding-right: 10px;
 margin: 0 auto;
 `;
 const InfoContainer = styled.div`
 display:flex;
 padding-top: 57px;
 gap: 30px;
+@media(max-width: 900px){
+    width:100%;
+    justify-content: space-around;
+}
 `;
 
 const LeftContainer = styled.div`
 
 `;
 const Logo = styled.img`
-margin-bottom
 `;
 const Infos = styled.div`
 display: flex;
@@ -70,7 +73,11 @@ const FoodNames = styled.p`
 `;
 const InstagramContainer = styled.div`
 padding-top: 57px;
-
+@media(max-width: 900px){
+        width: 0px;
+        height: 0px;
+        display: none;
+    }
 `;
 const InstagramImageContainer = styled.div`
 display:flex;
@@ -87,12 +94,15 @@ height:94.5px;
 const BottomSection = styled.div`
 width:100%;
 border-top: 1px solid rgba(255, 255, 255, 0.15);
+
 `;
 
 const BottomContentContainer = styled.div`
 display: flex;
 justify-content: space-between;
-max-width: 1320px;
+max-width: 1340px;
+padding-left: 10px;
+padding-right: 10px;
 margin: 0 auto;
 `;
 const CopyRightText = styled.p`

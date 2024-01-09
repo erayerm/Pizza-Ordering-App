@@ -52,12 +52,21 @@ const Container = styled.div`
     padding-bottom: 25px;
 `;
 const ItemContainer = styled.div`
-    width: 600px;
+    max-width: 620px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 `;
 
 const HalfPizza = styled.img`
-
+    max-width: 595px;
+    height: 291px;
+    align-self: center;
+    @media(max-width:595px){
+        width: 100%;
+    }
 `;
 const Nav = styled.nav`
         display: flex;

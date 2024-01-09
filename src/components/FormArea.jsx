@@ -55,6 +55,7 @@ const SizeContainer = styled.div`
 
 const HamurContainer = styled.div`
     width: 50%;
+    padding-left: 10%;
 `;
 
 const ExtrasContainer = styled.div`
@@ -77,6 +78,9 @@ const AllCheckBoxes = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
     gap: 13px;
+    @media(max-width: 900px){
+        height: 400px;
+    }
 `;
 
 const Info = styled.p`
@@ -345,7 +349,6 @@ export default function FormArea({setPropForm}) {
         <>
             <form id="pizza-form" onSubmit={handleSubmit}>
                 <SizeHamurContainer>
-                
                     <SizeContainer ref={sizeRef}>
                         <Titles>Boyut Seç <RedStar>*</RedStar></Titles>
                         <SizeFlex>

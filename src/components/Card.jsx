@@ -25,6 +25,7 @@ const FoodName = styled.p`
 const RatePriceContainer = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
 `;
 const Rate = styled.p`
     color: rgba(27, 27, 27, 0.70);
@@ -56,7 +57,7 @@ export default function Card({ cardData }) {
                 <FoodName>{cardData.name}</FoodName>
                 <RatePriceContainer>
                     <Rate>{cardData.rate}</Rate>
-                    <RateCount>{cardData.rateCount}</RateCount>
+                    <RateCount>({cardData.rateCount})</RateCount>
                     <Price>{cardData.price}₺</Price>
                 </RatePriceContainer>
             </Container>

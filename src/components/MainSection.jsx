@@ -5,7 +5,9 @@ import FormArea from "./FormArea";
 import Footer from "./Footer";
 
 const Container = styled.div`
-    width: 600px;
+    max-width: 620px;
+    padding-right: 10px;
+    padding-left: 10px;
     margin: 0 auto;
 `;
 
