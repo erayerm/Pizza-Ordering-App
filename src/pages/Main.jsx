@@ -3,6 +3,7 @@ import banner from "../assets/mvp-banner.png"
 import styled from "styled-components"
 import logo from "../assets/logo.svg"
 import { Link } from "react-router-dom";
+import BigCards from "../components/BigCards";
 
 const Title = styled.h1`
         color: #FFF;
@@ -96,7 +97,9 @@ const FoodCategoryText = styled.p`
 `;
 
 const MainSectionContainer = styled.div`
-    
+    width: 100vw;
+    background-color: #FAF7F2;
+    padding-top:120px;
 `;
 
 const Icon = styled.img`
@@ -126,15 +129,16 @@ export default function Main() {
             </Hero>
             <NavBarContainer>
                 <NavBar>
-                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/1.svg")} /><FoodCategoryText><span>YENİ!</span> Kore</FoodCategoryText></FoodCategories>
-                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/2.svg")} /><FoodCategoryText>Pizza</FoodCategoryText></FoodCategories>
-                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/3.svg")} /><FoodCategoryText>Burger</FoodCategoryText></FoodCategories>
-                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/4.svg")} /><FoodCategoryText>Kızartmalar</FoodCategoryText></FoodCategories>
-                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/5.svg")} /><FoodCategoryText>Fast Food</FoodCategoryText></FoodCategories>
-                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/6.svg")} /><FoodCategoryText>Gazlı İçecek</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/1.svg")}/><FoodCategoryText><span>YENİ!</span> Kore</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/2.svg")}/><FoodCategoryText>Pizza</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/3.svg")}/><FoodCategoryText>Burger</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/4.svg")}/><FoodCategoryText>Kızartmalar</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/5.svg")}/><FoodCategoryText>Fast Food</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/6.svg")}/><FoodCategoryText>Gazlı İçecek</FoodCategoryText></FoodCategories>
                 </NavBar>
             </NavBarContainer>
             <MainSectionContainer>
+                <BigCards/>
             {/*   CARDS COMPONENT
             <CardsContainer>
                 <BiggerCard>
