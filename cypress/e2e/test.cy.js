@@ -105,13 +105,20 @@ describe("Form Sayfasında", () => {
     })
 })
 
-
-/*
-const errorMessages = {
-    isim: "İsim en az 2 karakter olmalıdır!",
-    size: "Lütfen pizzanın boyutunu seçiniz!",
-    hamur: "Lütfen hamur kalınlığı seçiniz!",
-    malzemelerAz: "En az 4 malzeme seçmelisiniz!",
-    malzemelerFazla: "En fazla 10 malzeme seçebilirsiniz!",
-}
-*/
+describe("Ana Sayfada", () => {
+    it("Ana sayfadan başlayıp success sayfasına gidiyor", () => {
+        cy.visit("localhost:3000/");
+        cy.get("[data-cy=aciktimButon]").click();
+        cy.get("[data-cy=isim]").type("Eray");
+        cy.get("[data-cy=checkbox1]").check({ force: true });
+        cy.get("[data-cy=checkbox2]").check({ force: true });
+        cy.get("[data-cy=checkbox3]").check({ force: true });
+        cy.get("[data-cy=checkbox4]").check({ force: true });
+        cy.get("[data-cy=select]").select("İnce Hamur", { force: true }).invoke('val')
+            .should('eq', 'İnce Hamur');
+        cy.get("[data-cy=kucuk]").check({ force: true });
+        cy.get("[data-cy=submit]").click();
+        cy.contains("lezzetin yolda").should("exist");
+    })
+    
+})

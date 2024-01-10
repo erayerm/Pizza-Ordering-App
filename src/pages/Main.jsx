@@ -128,8 +128,8 @@ export default function Main() {
                     <Title>
                         KOD ACIKTIRIR PİZZA, DOYURUR
                     </Title>
-                    <Link to="/pizza">
-                        <Button id="order-pizza">ACIKTIM</Button>
+                    <Link data-cy="aciktimButon" to="/pizza">
+                        <Button  id="order-pizza">ACIKTIM</Button>
                     </Link>
                 </ItemsContainer>
             </Hero>
