@@ -232,7 +232,8 @@ const initialErrors = {
     size: false,
     hamur: false,
     malzemelerAz: false,
-    malzemelerFazla: true
+    malzemelerFazla: true,
+    dataSend: true
 }
 
 const errorMessages = {
@@ -241,6 +242,7 @@ const errorMessages = {
     hamur: "Lütfen hamur kalınlığı seçiniz!",
     malzemelerAz: "En az 4 malzeme seçmelisiniz!",
     malzemelerFazla: "En fazla 10 malzeme seçebilirsiniz!",
+    dataSend: "Bir hata oluştu!"
 }
 
 export default function FormArea({setPropForm}) {
@@ -255,7 +257,6 @@ export default function FormArea({setPropForm}) {
     const [checkedCount, setCheckedCount] = useState(0);
     const [isValid, setIsValid] = useState(false);
     const [buttonClicked, setButtonClicked] = useState(false);
-    
     const history = useHistory();
     useEffect(()=>{
         setForm({ ...form, "pizzaPrice": 85.50 });
@@ -294,8 +295,12 @@ export default function FormArea({setPropForm}) {
         }else{
             axios.post('https://reqres.in/api/users', form).then((res) => {
                 setPropForm({ ...res.data });
-            }).catch(err=>console.error(err));
-            history.push("/success");
+                history.push("/success");
+            }).catch(err=>{
+                console.error(err);
+                setErrors({ ...errors, "dataSend": false });
+            });
+            
         }
     }
     const adjustCount = (event) => {
@@ -431,6 +436,7 @@ export default function FormArea({setPropForm}) {
                             <PriceText data-cy="totalPrice">{((checkedCount * 5 + form.pizzaPrice) * form.howMany).toFixed(2)}₺</PriceText>
                         </ResultPrice>
                         <Submit data-cy="submit" type="submit" id="order-button" onClick={handleClick}>SİPARİŞ VER</Submit>
+                        {buttonClicked && !errors.dataSend && <HataMesaji>{errorMessages.dataSend}</HataMesaji>}
                     </ResultContainer>
                 </PaymentContainer>
             </form>

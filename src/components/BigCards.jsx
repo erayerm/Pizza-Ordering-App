@@ -15,10 +15,9 @@ const CardsContainer = styled.div`
     align-items:  center;
     margin-bottom: 100px;
     row-gap: 25px;
-    @media(max-width: 1350px){
+    @media(max-width: 900px){
         max-height: none;
     }
-    
 `;
 const FirstTitle = styled.div`
     color: #FFF;
@@ -90,7 +89,11 @@ const Card = styled.div`
         background-image: url(${kart3}); 
     };
     background-size: cover;
-    @media(max-width:636px){
+    @media(max-width:1350px){
+        width: 48%;
+        background-position: right;
+    }
+    @media(max-width:900px){
         width: 90%;
         background-position: right;
     }

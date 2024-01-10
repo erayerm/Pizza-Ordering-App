@@ -18,7 +18,9 @@ const Title = styled.h1`
         margin:0;
         margin-bottom: 17px;
         letter-spacing: 1.5px;
-
+    @media(max-width:800px){
+        font-size: 75px;
+    }
     `;
 const FirsatiKacirmaText = styled.p`
     font-family: 'Satisfy', cursive;
@@ -44,7 +46,7 @@ const ItemsContainer = styled.div`
         flex-direction: column;
         align-items:center;
         width: 30vw;
-        min-width: 636px;
+        max-width: 636px;
         margin: 0 auto;
         padding-top: 60px;
     `;
@@ -82,7 +84,7 @@ const NavBar = styled.nav`
     max-width: 1200px;
     margin: auto auto;
     flex-wrap: wrap;
-    
+    text-align: left;
 `;
 
 const FoodCategories = styled.a`
@@ -91,7 +93,7 @@ const FoodCategories = styled.a`
     gap: 15px;
     flex-basis: 200px;
     cursor: pointer;
-    justify-content: center;
+    justify-content: left;
     @media (max-width: 1200px){
         flex-basis: 30%;
     }

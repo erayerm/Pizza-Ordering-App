@@ -33,11 +33,12 @@ const FoodCategories = styled.div`
     background-color: #FFF;
     border-radius: 50px;
     padding: 20px 40px;
-    min-weight: 186px;
+    min-width: 186px;
     height: 80px;
     gap: 10px;
     border: none;
     justify-content: center;
+    
     @media (max-width: 1320px){
         flex-basis: 30%;
         margin: 0;
@@ -147,7 +148,7 @@ export default function Cards() {
                 <Title>Acıktıran Kodlara Doyuran Lezzetler</Title>
             </TitleContainer>
             <NavBar>
-                <FoodCategories onClick={(e) => handleClick(e)} id="button1" className={buttons.button1 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button1" src={require("../assets/adv-aseets/icons/1.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button1"><span>YENİ!</span> Kore</FoodCategoryText></FoodCategories>
+                <FoodCategories onClick={(e) => handleClick(e)} id="button1" className={buttons.button1 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button1" src={require("../assets/adv-aseets/icons/1.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button1"><span onClick={(e) => handleClick(e)} id="button1">YENİ!</span> Kore</FoodCategoryText></FoodCategories>
                 <FoodCategories onClick={(e) => handleClick(e)} id="button2" className={buttons.button2 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button2" src={require("../assets/adv-aseets/icons/2.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button2">Pizza</FoodCategoryText></FoodCategories>
                 <FoodCategories onClick={(e) => handleClick(e)} id="button3" className={buttons.button3 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button3" src={require("../assets/adv-aseets/icons/3.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button3">Burger</FoodCategoryText></FoodCategories>
                 <FoodCategories onClick={(e) => handleClick(e)} id="button4" className={buttons.button4 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button4" src={require("../assets/adv-aseets/icons/4.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button4">Kızartmalar</FoodCategoryText></FoodCategories>
