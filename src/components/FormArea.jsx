@@ -393,8 +393,8 @@ export default function FormArea({setPropForm}) {
                                 .replaceAll(" ", "");
                             lowerExtra = lowerExtra.charAt(0).toLowerCase() + lowerExtra.slice(1);
                             return <Checkboxes key={index}>
-                                <label class="containerCheckbox" htmlFor={lowerExtra}>{extra}
-                                <input data-cy={"checkbox"+(index+1)} onChange={handleChange} type="checkbox" id={lowerExtra} name={lowerExtra} value={extra} />
+                                <label data-cy={"checkboxLabel" + (index + 1)} class="containerCheckbox" htmlFor={lowerExtra}>{extra}
+                                    <input data-cy={"checkbox" + (index + 1)} onChange={handleChange} type="checkbox" id={lowerExtra} name={lowerExtra} value={extra} />
                                     <span class="checkmarkCheckbox"></span>
                                 </label>
                             </Checkboxes>
@@ -416,19 +416,19 @@ export default function FormArea({setPropForm}) {
                 <hr />
                 <PaymentContainer>
                     <ButtonGroup>
-                        <YellowButton type="button" id="azalt" onClick={adjustCount}>-</YellowButton>
+                        <YellowButton data-cy="azaltButton" type="button" id="azalt" onClick={adjustCount}>-</YellowButton>
                         <Button type="button">{form.howMany}</Button>
-                        <YellowButton type="button" id="arttir" onClick={adjustCount}>+</YellowButton>
+                        <YellowButton data-cy="arttirButton" type="button" id="arttir" onClick={adjustCount}>+</YellowButton>
                     </ButtonGroup>
                     <ResultContainer>
                         <Title>Sipariş Toplamı</Title>
                         <Prices>
                             <PriceText>Seçimler</PriceText>
-                            <PriceText>{checkedCount * 5}₺</PriceText>
+                            <PriceText>{(checkedCount * 5).toFixed(2)}₺</PriceText>
                         </Prices>
                         <ResultPrice>
                             <PriceText>Toplam</PriceText>
-                            <PriceText>{(checkedCount * 5 + form.pizzaPrice) * form.howMany}₺</PriceText>
+                            <PriceText data-cy="totalPrice">{((checkedCount * 5 + form.pizzaPrice) * form.howMany).toFixed(2)}₺</PriceText>
                         </ResultPrice>
                         <Submit data-cy="submit" type="submit" id="order-button" onClick={handleClick}>SİPARİŞ VER</Submit>
                     </ResultContainer>
