@@ -45,8 +45,7 @@ const ItemsContainer = styled.div`
         display: flex;
         flex-direction: column;
         align-items:center;
-        width: 30vw;
-        max-width: 636px;
+        max-width: 700px;
         margin: 0 auto;
         padding-top: 60px;
     `;
