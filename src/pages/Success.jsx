@@ -6,6 +6,7 @@ import logo from "../assets/logo.svg"
 const Container = styled.div`
     width:100vw;
     min-height: 100vh;
+    padding-bottom: 40px;
     background-color:#CE2829;
     display: flex;
     flex-direction: column;
