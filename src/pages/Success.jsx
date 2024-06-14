@@ -2,6 +2,7 @@
 import React from "react"
 import styled from "styled-components"
 import logo from "../assets/logo.svg"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Container = styled.div`
     width:100vw;
@@ -15,6 +16,7 @@ const Container = styled.div`
     color: #FFF;
 `;
 const Logo = styled.div`
+    cursor: pointer;
     margin: 0;
     margin-top: 50px;
 `;
@@ -136,14 +138,14 @@ const extras = {
 }
 
 export default function Success({ propForm }) {
-
+    const history = useHistory();
     let formDataArray = Object.keys(propForm).map((key) => [key, propForm[key]]);
     formDataArray = formDataArray.filter(item => item[1] === true);
-    
+
     return (
         <>
             <Container>
-                <Logo>
+                <Logo onClick={() => history.push("")}>
                     <img src={logo} alt="logo" />
                 </Logo>
                 <TitleContainer>

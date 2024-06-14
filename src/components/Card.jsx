@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -9,6 +10,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     border-radius: 12px;
+    cursor: pointer;
 `;
 const FoodImage = styled.img`
     width: 80%;
@@ -50,9 +52,10 @@ const Price = styled.p`
 `;
 
 export default function Card({ cardData }) {
+    const history = useHistory();
     return (
         <>
-            <Container>
+            <Container onClick={() => history.push("/pizza")}>
                 <FoodImage src={require(`../assets/adv-aseets/${cardData.image}`)} />
                 <FoodName>{cardData.name}</FoodName>
                 <RatePriceContainer>

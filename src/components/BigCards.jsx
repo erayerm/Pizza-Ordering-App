@@ -3,6 +3,7 @@ import styled from "styled-components";
 import kart1 from "../assets/adv-aseets/kart-1.png"
 import kart2 from "../assets/adv-aseets/kart-2.png"
 import kart3 from "../assets/adv-aseets/kart-3.png"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const CardsContainer = styled.div`
     display: flex;
@@ -66,6 +67,7 @@ border:none;
 line-height: 48px; /* 342.857% */
 padding: 3px 18px 0px 18px;
 margin-top: 30px;
+cursor: pointer;
 `;
 const RedText = styled.span`
     color: red;
@@ -101,9 +103,12 @@ const Card = styled.div`
 
 
 
-export default function BigCards(){
-
-    return(
+export default function BigCards() {
+    const history = useHistory();
+    const goToOrder = () => {
+        history.push("/pizza");
+    }
+    return (
         <CardsContainer>
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Quattrocento:wght@700&display=swap');
@@ -111,15 +116,15 @@ export default function BigCards(){
             <Card className="firstCard">
                 <FirstTitle>Özel Lezzetus</FirstTitle>
                 <InfoOfCard>Position:Absolute Acı Burger</InfoOfCard>
-                <ButtonOfCard>SİPARİŞ VER</ButtonOfCard>
+                <ButtonOfCard onClick={goToOrder}>SİPARİŞ VER</ButtonOfCard>
             </Card>
             <Card className="secondCard">
                 <SecondTitle>Hackathlon Burger Menü</SecondTitle>
-                <ButtonOfCard>SİPARİŞ VER</ButtonOfCard>
+                <ButtonOfCard onClick={goToOrder}>SİPARİŞ VER</ButtonOfCard>
             </Card>
             <Card className="thirdCard">
                 <ThirdTitle><RedText>Çoooook</RedText> hızlı npm gibi kurye</ThirdTitle>
-                <ButtonOfCard>SİPARİŞ VER</ButtonOfCard>
+                <ButtonOfCard onClick={goToOrder}>SİPARİŞ VER</ButtonOfCard>
             </Card>
         </CardsContainer>
     )

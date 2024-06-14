@@ -22,8 +22,6 @@ const extras = [
     "Zeytin"
 ]
 
-
-
 const Titles = styled.p`
     color: #292929;
     font-family: Barlow;
@@ -245,7 +243,7 @@ const errorMessages = {
     dataSend: "Bir hata oluştu!"
 }
 
-export default function FormArea({setPropForm}) {
+export default function FormArea({ setPropForm }) {
 
     const sizeRef = useRef(null);
     const hamurRef = useRef(null);
@@ -258,7 +256,7 @@ export default function FormArea({setPropForm}) {
     const [isValid, setIsValid] = useState(false);
     const [buttonClicked, setButtonClicked] = useState(false);
     const history = useHistory();
-    useEffect(()=>{
+    useEffect(() => {
         setForm({ ...form, "pizzaPrice": 85.50 });
     }, [])
     useEffect(() => {
@@ -277,12 +275,12 @@ export default function FormArea({setPropForm}) {
     }
 
     function handleClick() {
-        if(!isValid){
+        if (!isValid) {
             setButtonClicked(true);
-            if(!errors.hamur){
+            if (!errors.hamur) {
                 hamurRef.current.scrollIntoView({ behavior: 'smooth' });
 
-            } else if (!errors.size){
+            } else if (!errors.size) {
                 sizeRef.current.scrollIntoView({ behavior: 'smooth' });
 
             } else if (!errors.malzemelerAz || !errors.malzemelerFazla) {
@@ -292,15 +290,15 @@ export default function FormArea({setPropForm}) {
                 isimRef.current.scrollIntoView({ behavior: 'smooth' });
 
             }
-        }else{
+        } else {
             axios.post('https://reqres.in/api/users', form).then((res) => {
                 setPropForm({ ...res.data });
                 history.push("/success");
-            }).catch(err=>{
+            }).catch(err => {
                 console.error(err);
                 setErrors({ ...errors, "dataSend": false });
             });
-            
+
         }
     }
     const adjustCount = (event) => {
@@ -390,8 +388,8 @@ export default function FormArea({setPropForm}) {
                     </HamurContainer>
                 </SizeHamurContainer>
                 <ExtrasContainer ref={extrasRef}>
-                    <Titles>Ek Malzemeler</Titles>
-                    <Info>En Fazla 10 malzeme seçebilirsiniz. 5₺</Info>
+                    <Titles>Ek Malzemeler <RedStar>*</RedStar></Titles>
+                    <Info>En az 4 en fazla 10 malzeme seçebilirsiniz. (5₺)</Info>
                     <AllCheckBoxes>
                         {extras.map((extra, index) => {
                             let lowerExtra = TrToEn(extra)
@@ -410,7 +408,7 @@ export default function FormArea({setPropForm}) {
 
                 </ExtrasContainer>
                 <NameContainer ref={isimRef}>
-                    <Titles>Adınız</Titles>
+                    <Titles>Adınız <RedStar>*</RedStar></Titles>
                     <input class="name" onChange={handleChange} data-cy="isim" type="text" name="isim" value={form.isim} placeholder="Adınızı girin." />
                     {buttonClicked && !errors.isim && <HataMesaji>{errorMessages.isim}</HataMesaji>}
                 </NameContainer>

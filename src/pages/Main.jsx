@@ -51,11 +51,11 @@ const ItemsContainer = styled.div`
     `;
 
 const Button = styled.button`
-        font-size: 18px;
+        font-size: 24px;
         background-color: #FDC913;
         color: #292929;
         border-radius: 50px;
-        padding: 10px 50px;
+        padding: 15px 55px;
         border: none;
         margin-top: 20px;
         cursor: pointer;
@@ -119,7 +119,7 @@ const Icon = styled.img`
 export default function Main() {
     return (
         <>
-            
+
             <Hero>
                 <ItemsContainer>
                     <Logo src={logo} alt="logo" />
@@ -128,25 +128,25 @@ export default function Main() {
                         KOD ACIKTIRIR PİZZA, DOYURUR
                     </Title>
                     <Link data-cy="aciktimButon" to="/pizza">
-                        <Button  id="order-pizza">ACIKTIM</Button>
+                        <Button id="order-pizza">ACIKTIM</Button>
                     </Link>
                 </ItemsContainer>
             </Hero>
             <NavBarContainer>
                 <NavBar>
-                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/1.svg")}/><FoodCategoryText><span>YENİ!</span> Kore</FoodCategoryText></FoodCategories>
-                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/2.svg")}/><FoodCategoryText>Pizza</FoodCategoryText></FoodCategories>
-                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/3.svg")}/><FoodCategoryText>Burger</FoodCategoryText></FoodCategories>
-                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/4.svg")}/><FoodCategoryText>Kızartmalar</FoodCategoryText></FoodCategories>
-                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/5.svg")}/><FoodCategoryText>Fast Food</FoodCategoryText></FoodCategories>
-                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/6.svg")}/><FoodCategoryText>Gazlı İçecek</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/1.svg")} /><FoodCategoryText><span>YENİ!</span> Kore</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/2.svg")} /><FoodCategoryText>Pizza</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/3.svg")} /><FoodCategoryText>Burger</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/4.svg")} /><FoodCategoryText>Kızartmalar</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/5.svg")} /><FoodCategoryText>Fast Food</FoodCategoryText></FoodCategories>
+                    <FoodCategories><Icon src={require("../assets/adv-aseets/icons/6.svg")} /><FoodCategoryText>Gazlı İçecek</FoodCategoryText></FoodCategories>
                 </NavBar>
             </NavBarContainer>
             <MainSectionContainer>
-                <BigCards/>
-                <Cards/>
+                <BigCards />
+                <Cards />
             </MainSectionContainer>
-            <Footer/>
+            <Footer />
         </>
     )
 }

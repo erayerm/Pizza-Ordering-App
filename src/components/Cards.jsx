@@ -132,14 +132,11 @@ const cardData = [
     }
 ]
 
+const navBar = ["Yeni! Kore", "Pizza", "Burger", "Kızartmalar", "Fast Food", "Gazlı İçecek"]
 
 export default function Cards() {
+    const [pickedIndex, setPickedIndex] = useState(0);
 
-    const [buttons, setButtons] = useState(initialButtons);
-    const handleClick = (event) => {
-        let { id } = event.target;
-        setButtons({ ...emptyButtons, [`${id}`]: true });
-    }
     return (
 
         <Container>
@@ -148,12 +145,9 @@ export default function Cards() {
                 <Title>Acıktıran Kodlara Doyuran Lezzetler</Title>
             </TitleContainer>
             <NavBar>
-                <FoodCategories onClick={(e) => handleClick(e)} id="button1" className={buttons.button1 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button1" src={require("../assets/adv-aseets/icons/1.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button1"><span onClick={(e) => handleClick(e)} id="button1">YENİ!</span> Kore</FoodCategoryText></FoodCategories>
-                <FoodCategories onClick={(e) => handleClick(e)} id="button2" className={buttons.button2 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button2" src={require("../assets/adv-aseets/icons/2.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button2">Pizza</FoodCategoryText></FoodCategories>
-                <FoodCategories onClick={(e) => handleClick(e)} id="button3" className={buttons.button3 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button3" src={require("../assets/adv-aseets/icons/3.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button3">Burger</FoodCategoryText></FoodCategories>
-                <FoodCategories onClick={(e) => handleClick(e)} id="button4" className={buttons.button4 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button4" src={require("../assets/adv-aseets/icons/4.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button4">Kızartmalar</FoodCategoryText></FoodCategories>
-                <FoodCategories onClick={(e) => handleClick(e)} id="button5" className={buttons.button5 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button5" src={require("../assets/adv-aseets/icons/5.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button5">Fast Food</FoodCategoryText></FoodCategories>
-                <FoodCategories onClick={(e) => handleClick(e)} id="button6" className={buttons.button6 ? "active" : "false"}><Icon onClick={(e) => handleClick(e)} id="button6" src={require("../assets/adv-aseets/icons/6.svg")} /><FoodCategoryText onClick={(e) => handleClick(e)} id="button6">Gazlı İçecek</FoodCategoryText></FoodCategories>
+                {navBar.map((item, index) => {
+                    return <FoodCategories onClick={() => setPickedIndex(index)} className={index === pickedIndex ? "active" : ""}><Icon src={require(`../assets/adv-aseets/icons/${index + 1}.svg`)} /><FoodCategoryText>{item}</FoodCategoryText></FoodCategories>
+                })}
             </NavBar>
             <CardContainer>
                 {cardData.map((item, index) => {
